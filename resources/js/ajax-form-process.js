@@ -14,24 +14,24 @@ $(document).ready(function () {
                 }
             },
             error: function(err) {
-                response = err.responseJSON;
+                errorMessages = err.responseJSON.errors;
                 if (err.status === 422) {
-                    if (response.contactFormName) {
-                        $('.flash-message-name span').html(response.contactFormName[0]);
+                    if (errorMessages.contactFormName) {
+                        $('.flash-message-name span').html(errorMessages.contactFormName[0]);
                         $('.flash-message-name').removeClass('d-none');
                     }
                     else {
                         $('.flash-message-name').addClass('d-none');
                     }
-                    if (response.contactFormEmail) {
-                        $('.flash-message-email span').html(response.contactFormEmail[0]);
+                    if (errorMessages.contactFormEmail) {
+                        $('.flash-message-email span').html(errorMessages.contactFormEmail[0]);
                         $('.flash-message-email').removeClass('d-none');
                     }
                     else {
                         $('.flash-message-email').addClass('d-none');
                     }
-                    if (response.contactFormMessage) {
-                        $('.flash-message-message span').html(response.contactFormMessage[0]);
+                    if (errorMessages.contactFormMessage) {
+                        $('.flash-message-message span').html(errorMessages.contactFormMessage[0]);
                         $('.flash-message-message').removeClass('d-none');
                     }
                     else {
@@ -61,15 +61,15 @@ $(document).ready(function () {
             error: function (err) {
                 response = err.responseJSON;
                 if (err.status === 422) {
-                    if (response.contactFormName) {
-                        $('.flash-message-newsletter-form-name span').html(response.contactFormName[0]);
+                    if (errorMessages.contactFormName) {
+                        $('.flash-message-newsletter-form-name span').html(errorMessages.contactFormName[0]);
                         $('.flash-message-newsletter-form-name').removeClass('d-none');
                     }
                     else {
                         $('.flash-message-newsletter-form-name').addClass('d-none');
                     }
-                    if (response.contactFormEmail) {
-                        $('.flash-message-newsletter-form-email span').html(response.contactFormEmail[0]);
+                    if (errorMessages.contactFormEmail) {
+                        $('.flash-message-newsletter-form-email span').html(errorMessages.contactFormEmail[0]);
                         $('.flash-message-newsletter-form-email').removeClass('d-none');
                     }
                     else {

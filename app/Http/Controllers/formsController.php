@@ -14,7 +14,7 @@
         return response()->json($data);
      }
         public function postContact(MailFormValidationRequest $request) {
-
+            dd($request);
 
             $data = [
                 'name' => $request->input('contactFormName'),
