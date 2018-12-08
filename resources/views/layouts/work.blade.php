@@ -9,19 +9,18 @@
                 @include('frontend.components.navigation')
         </header>
         @include('frontend/components/content-header')
-        <section class="container">
+        @include('frontend/components/breadcrumbs')
+
+        <main class="container">
             <div class="row">
-                <aside class="col-lg-3 col-md-3 col-sm-3 services-menu">
-                    <h4>OUR WORK</h4>
-                    @include('frontend.menus.sidebar-work-menu')
-                </aside>
-                <main class="col-lg-9 col-md-9 col-sm-9">
+     
+                <main class="col-sm-12">
                     <div class="content">
                         @yield('content')
                     </div>
                 </main>
             </div>
-         </section>
+        </main>
         <footer>
                 @include('frontend.components.footer')
         </footer>

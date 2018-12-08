@@ -1,7 +1,7 @@
 @extends('layouts.page')
 @section('content')
                 <h2>We develop highly tailored websites</h2>
-                <p>We've crafted many projects in the digital space for over 15 years. Whether you need a bespoke website or need to add special features into your existing site, our experienced developers can help.&nbsp;</p>
+                <p>We've crafted many projects in the digital space for over 10 years. Whether you need a bespoke website or need to add special features into your existing site, our experienced developers can help.&nbsp;</p>
                 <p>From simple business websites to complex projects such as, portals, ecommerce and market place websites. We have the experience and knowledge to help you realise your goals.</p>
                 <h3>Drupal and WordPress development</h3>
                 <p>We develop websites on both the Wordpress and Drupal CMS frameworks. Whether you are looking for a functional business website that works as an online brochure or if you require a more complex build such as a marketplace website, we will recommend the framework that will best support your project.</p>

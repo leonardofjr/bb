@@ -9,6 +9,7 @@
     
     class PagesController extends Controller {
         public function getHomepage() {
+        
             return view('frontend.pages.home');
         }
 
@@ -21,12 +22,13 @@
          } 
 
          public function getWorkPage() {
-            return view('frontend.pages.work');
+            $json = Storage::disk('public')->get('work_table.json');
+            $json =  json_decode($json, true);
+            
+            return view('frontend.pages.work')->with([
+                "data" => $json["post"]
+            ]);
          } 
-
-         public function getSupportPage() {
-            return view('frontend.pages.support');
-         }  
 
          public function getContactPage() {
             return view('frontend.pages.contact');

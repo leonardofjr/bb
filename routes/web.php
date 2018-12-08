@@ -41,8 +41,6 @@ Route::get('/work',  ['as' => 'Work', 'uses' => 'PagesController@getWorkPage']);
     Route::get('/work/logo',['as' => 'Logos', 'uses' => 'WorkPagesController@getLogoWork']);
     Route::get('/work/graphic-design',['as' => 'Graphic Design', 'uses' => 'WorkPagesController@getGraphicDesignWork']);
 
-// ** Support Studies ** //
-Route::get('/support',  ['as' => 'Support', 'uses' => 'PagesController@getSupportPage']);
 
 // ** Contact Studies ** //
 Route::get('/contact',  ['as' => 'Contact us', 'uses' => 'PagesController@getContactPage']);

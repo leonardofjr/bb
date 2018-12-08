@@ -9,8 +9,9 @@
                 @include('frontend.components.navigation')
         </header>
         @include('frontend/components/content-header')
+        @include('frontend/components/breadcrumbs')
 
-        <section class="container">
+        <main class="container">
 
             <div class="row">
                 <aside class="col-lg-3 col-md-3 col-sm-3 services-menu">

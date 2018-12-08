@@ -1,26 +1,23 @@
 @extends('layouts.work')
 @section('content')
 
-<div class="row pb-5">
-    <div class="col-md-12">
-      <img src="{{asset('assets\png\isa-website-home.png')}}" alt="a" class="img-fluid py-3">
+      @foreach ($data as $post)
+      <div class="row pb-5">
+
+      <div class="col-md-6">
+        <img src ="{{asset('assets/png/' . $post["img_src"])}}" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <b>Services Provided:</b>
+        <p>{!!$post["services_provided"]!!}</p>
+        <a href="{{$post["website_url"]}}" class="btn btn-primary">Launch Website</a>
+      </div>
     </div>
 
-</div>
+      @endforeach
 
 
-<div class="row pb-5">
-    <div class="col-md-12">
-      <img src="{{asset('assets\png\slh-website-home.png')}}" alt="a" class="img-fluid py-3">
-    </div>
 
-</div>
-    
-    
-<div class="row pb-5">
-    <div class="col-md-12">
-      <img src="{{asset('assets\png\tca-website-home.png')}}" alt="a" class="img-fluid py-3">
-    </div>
 
 </div>
     

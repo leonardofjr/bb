@@ -101,7 +101,6 @@ $(document).ready(function () {
                 }
             },
             error: function error(err) {
-                console.log(err);
                 errorMessages = err.responseJSON.errors;
                 if (err.status === 422) {
                     if (errorMessages.contactFormName) {

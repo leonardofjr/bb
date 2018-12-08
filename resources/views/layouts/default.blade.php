@@ -15,7 +15,9 @@
         </header>
                     @if (!\Request::is('/'))  
                          @include('frontend/components/content-header')
-                    @endif
+                         @include('frontend/components/breadcrumbs')
+
+                         @endif
         <main>
 
             <div class="content">

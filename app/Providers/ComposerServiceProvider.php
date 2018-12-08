@@ -17,6 +17,7 @@ class ComposerServiceProvider extends ServiceProvider
      
        View::composer(['*'], 'App\Http\ViewComposers\MenuComposer');
        View::composer(['*'], 'App\Http\ViewComposers\CompanyInfoComposer');
+       View::composer(['*'], 'App\Http\ViewComposers\BreadcrumbsComposer');
     }
 
     /**
