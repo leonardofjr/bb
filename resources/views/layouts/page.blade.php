@@ -18,15 +18,15 @@
                     <h4>OUR SERVICES</h4>
                     @include('frontend.menus.sidebar-menu')
                 </aside>
-                <main class="col-lg-9 col-md-9 col-sm-9">
+                <section class="col-lg-9 col-md-9 col-sm-9">
 
                     <div class="content">
 
                         @yield('content')
                     </div>
-                </main>
+                </section>
             </div>
-         </section>
+        </main>
         <footer>
                 @include('frontend.components.footer')
         </footer>
