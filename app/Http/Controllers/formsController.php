@@ -24,26 +24,12 @@
 
             Mail::send('emails.process', $data , function ($m) use ($data) {
             $m->from($data['email'], $data['name']);
-            $m->to('leo@startupdesigns.ca')->subject('This mail is sent via contact form on startupdesigns.ca');
+            $m->to('leo@startupdesigns.ca')->subject('This mail is sent via contact form on beautybliss.ca');
         });
 
         return response()->json($data);
         }// postContact() Ends Here
 
-        public function postNewsletter(NewsletterFormValidationRequest $request) {
-
-            $data = [
-                'name' => $request->input('newsletterFormName'),
-                'email' => $request->input('newsletterFormEmail'),
-            ];
-
-            Mail::send('emails.newsletter', $data , function ($m) use ($data) {
-            $m->from($data['email'], $data['name']);
-            $m->to('leo@startupdesigns.ca')->subject('A new user has subscribed to startupdesigns.ca');
-        });
-
-        return response()->json($data);
-        }// postNewsletter() Ends Here
 
     }
 ?>

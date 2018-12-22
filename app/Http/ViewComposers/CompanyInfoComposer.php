@@ -9,11 +9,12 @@ class CompanyInfoComposer {
     public function compose(View $view) {
 
       $view->with([
-        'company_name' => 'Startup Designs',
-        'company_address' => '62 Lost Pond Crescent',
-        'company_city' => 'Stouffville',
-        'company_territory' => 'Ontario',
-        'company_phone' => '647-688-9189',
+        'company_name' => 'Beauty Bliss',
+        'company_address' => '',
+        'company_city' => '',
+        'company_territory' => '',
+        'company_phone' => '647-982-8637',
+        'company_email' => 'info@beautybliss.ca',
       ]);
     }
 

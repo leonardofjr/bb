@@ -30,7 +30,6 @@
         <footer>
                 @include('frontend.components.footer')
         </footer>
-        @include('frontend.vendors.tawk-chat-app')
     </body>
     @include('frontend.components.partials.after-body-scripts')
 

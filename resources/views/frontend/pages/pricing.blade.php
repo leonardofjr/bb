@@ -1,7 +1,7 @@
 @extends('layouts.default')
-@section('title', 'About')
+@section('title', 'Pricing')
 @section('content')
     <section class="container"> 
-     
+             
     </section>
-
+@endsection

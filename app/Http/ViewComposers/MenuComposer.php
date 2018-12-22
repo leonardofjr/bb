@@ -26,7 +26,7 @@ class MenuComposer {
 
     public function compose(View $view) {
       $mainPages = $this->getRoutesByController('App\Http\Controllers\PagesController@');
-      $servicesPages = $this->getRoutesByController('App\Http\Controllers\ServicesPagesController@');
+      $servicesPages = $this->getRoutesByController('App\Http\Controllers\PortfolioPagesController@');
       $workPages = $this->getRoutesByController('App\Http\Controllers\WorkPagesController@');
       $view->with([
         'main_pages' => $mainPages,

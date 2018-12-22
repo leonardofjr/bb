@@ -4,13 +4,17 @@
         @include('frontend.components.partials.head')
     </head>
     <body>
-        <a id="top"></a>
         <header>
+            <div class="container-fluid">
+                <div class="container text-right">
+                  <?php echo $company_phone ?>
+                  <?php echo $company_email ?>
+                </div>
+            </div>
            @include('frontend.components.navigation')
             <!-- If user is on the homepage display this -->
             @if (\Request::is('/'))  
                 @include ('frontend.components.jumbotron')
-                @include ('frontend.components.our-work-carousel')
             @endif
         </header>
                     @if (!\Request::is('/'))  
@@ -28,7 +32,6 @@
         <footer>
            @include('frontend.components.footer')
         </footer>
-        @include('frontend.vendors.tawk-chat-app')
     </body>
     @include('frontend.components.partials.after-body-scripts')
 

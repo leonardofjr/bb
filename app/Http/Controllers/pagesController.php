@@ -17,18 +17,23 @@
             return view('frontend.pages.about');
          }
 
-         public function getServicesPage() {
-            return view('frontend.pages.services');
+         public function getTestimonialsPage() {
+            return view('frontend.pages.testimonials');
+         }
+
+         public function getPricingPage() {
+            return view('frontend.pages.pricing');
          } 
 
-         public function getWorkPage() {
-            $json = Storage::disk('public')->get('work_table.json');
-            $json =  json_decode($json, true);
+         public function getPortfolioPage() {
+   //         $json = Storage::disk('public')->get('work_table.json');
+    //        $json =  json_decode($json, true);
             
-            return view('frontend.pages.work')->with([
-                "data" => $json["post"]
-            ]);
+            return view('frontend.pages.portfolio');
          } 
+
+   
+
 
          public function getContactPage() {
             return view('frontend.pages.contact');
