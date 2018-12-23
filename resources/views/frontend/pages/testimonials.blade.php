@@ -6,4 +6,4 @@
     </section>
 
 
-@stop
+@endsection

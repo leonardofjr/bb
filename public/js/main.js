@@ -77,7 +77,7 @@ module.exports = __webpack_require__(45);
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(46);
-__webpack_require__(52);
+__webpack_require__(47);
 
 /***/ }),
 
@@ -130,7 +130,7 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 52:
+/***/ 47:
 /***/ (function(module, exports) {
 
 // Use the CDN or host the script yourself
@@ -139,9 +139,9 @@ $(document).ready(function () {
 
 var userFeed = new Instafeed({
     get: 'user',
-    userId: '3588443679',
-    clientId: '502665ce97d040c0b33927e6011e493e',
-    accessToken: '3588443679.1677ed0.4b226543a5e340d5b1bcf4e33cf1c5ce',
+    userId: '1434371074',
+    clientId: 'e76694fd38c7412482d957c8fa45c8a4',
+    accessToken: '1434371074.1677ed0.911988fab4b64ae29eccb01405fb1a76',
     resolution: 'standard_resolution',
     template: '\
     <div class="col-sm-3">\

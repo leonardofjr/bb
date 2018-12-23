@@ -3,5 +3,6 @@
         <h2>TESTIMONIALS</h2>
         <p>Thank you for doing such an amazing job on both my engagement and wedding day!!
     <br>Dilly S.</p>
+    <a href="/testimonials" class="btn btn-primary">View more</a>
     </div>
 </section>

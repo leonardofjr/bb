@@ -1,7 +1,18 @@
 <div class="jumbotron jumbotron-fluid">
-    <div>
-        <div style="position: absolute; top: 50%; left: 50%; color: #fff; transform: translate(-50%, -50%)">
-          <h1 class="main-heading">Multi-page is a thing of the past, Get a bigger return on your investment with Single Page Applications.</h1>
+    <div class="row">
+        <div class="col-sm-6">
+             <div id="left-image">
+
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="top-image">
+
+            </div>
+            <div id="bottom-image">
+
+            </div>
+
         </div>
     </div>
 </div>
