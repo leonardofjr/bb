@@ -126,6 +126,10 @@ p {
   padding-bottom: 1rem;
 }
 
+b {
+  font-weight: 600;
+}
+
 h1 {
   font-weight: 500;
   font-size: 2.3em;
@@ -170,57 +174,31 @@ header .main-heading span {
   font-size: .8em;
 }
 
-.gallery .row {
-  padding: 15px 0;
+#instafeed .card {
+  margin: 5px;
 }
 
-.gallery .col-lg-4 {
-  position: relative;
+#instafeed .img-container {
+  height: 400px;
 }
 
-.gallery img {
-  width: 100%;
-  height: auto;
+#instafeed .col-sm-3 img {
   display: block;
-}
-
-.gallery .img-overlay img {
-  cursor: pointer;
   width: auto;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  opacity: 1;
-  -webkit-transition: .5s ease;
-  transition: .5s ease;
+  height: auto;
 }
 
-.gallery .img-overlay:hover {
-  -webkit-animation-name: fade;
-          animation-name: fade;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+#testimonials {
+  height: 600px;
+  color: #fff;
+  background-image: url("/assets/png/testimonials-bg.png");
+  background-size: cover;
+  background-position: center center;
 }
 
-@-webkit-keyframes fade {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
+@media (min-width: 768px) {
+  #testimonials {
+    height: 800px;
   }
 }
 

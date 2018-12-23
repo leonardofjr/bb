@@ -1,0 +1,11 @@
+#testimonials {
+    height: 600px;
+    color: #fff;
+    background-image: url("/assets/png/testimonials-bg.png");
+    background-size: cover;
+    background-position: center center;
+    
+    @include breakpoint(sm) {
+        height: 800px;
+    }
+}

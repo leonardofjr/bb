@@ -1,1 +1,2 @@
-require('./ajax-form-process');
+require('./ajax-form-process.js');
+require('./instagram-feed.js');
