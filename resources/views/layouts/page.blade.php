@@ -6,10 +6,16 @@
     <body>
         <a id="top"></a>
         <header>
+            <div class="container-fluid">
+                <div class="container text-right">
+                  <?php echo $company_phone ?>
+                  <?php echo $company_email ?>
+                </div>
+            </div>
                 @include('frontend.components.navigation')
         </header>
-        @include('frontend/components/content-header')
-        @include('frontend/components/breadcrumbs')
+                @include('frontend/components/content-header')
+                @include('frontend/components/breadcrumbs')
 
         <main class="container">
 

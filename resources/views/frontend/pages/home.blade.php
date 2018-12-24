@@ -1,9 +1,14 @@
 @extends('layouts.default')
 @section('title', 'Makeup Services In Brampton')
 @section('content')
-
+<section class="container-fluid">
+    <div class="container">
+        @foreach ($data['makeup'] as $img)
+            <img src='{{asset("portfolio_images/makeup") . "/" . $img}}'>
+        @endforeach
+    </div>
+</section>
 @include('frontend.components.testimonials')
-
 
 @include('frontend.components.instagram-feed')
 

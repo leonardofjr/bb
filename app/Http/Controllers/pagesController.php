@@ -9,12 +9,28 @@
     
     class PagesController extends Controller {
         public function getHomepage() {
-        
-            return view('frontend.pages.home');
+            $data = $this->getImages();
+            return view('frontend.pages.home')->withData($data);
         }
+        // Helper Function Return Files In portfolio_images
+
 
          public function getAboutPage() {
             return view('frontend.pages.about');
+         }
+
+         public function getImages() {
+            $makeup_images =  glob("../public/portfolio_images/makeup/*.jpg"); 
+            $hair =  glob("../public/portfolio_images/hair/*.jpg"); 
+            $fashion =  glob("../public/portfolio_images/fashion/*.jpg"); 
+            foreach($makeup_images as $img) {
+                $makeup[] = basename($img);
+            }
+            return [
+               'makeup' => $makeup,
+               'hair' => $hair,
+               'fashion' => $fashion,
+            ];
          }
 
          public function getTestimonialsPage() {
@@ -31,9 +47,6 @@
             
             return view('frontend.pages.portfolio');
          } 
-
-   
-
 
          public function getContactPage() {
             return view('frontend.pages.contact');
