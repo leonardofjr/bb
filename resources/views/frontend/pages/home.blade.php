@@ -3,8 +3,8 @@
 @section('content')
 <section class="container-fluid">
     <div class="container">
-        @foreach ($data['makeup'] as $img)
-            <img src='{{asset("portfolio_images/makeup") . "/" . $img}}'>
+        @foreach ($data as $item)
+            <img src={{asset("storage/$item->basename")}}>
         @endforeach
     </div>
 </section>

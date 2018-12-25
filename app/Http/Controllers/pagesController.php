@@ -9,7 +9,7 @@
     
     class PagesController extends Controller {
         public function getHomepage() {
-            $data = $this->getImages();
+            $data = $this->getPortfolioImages();
             return view('frontend.pages.home')->withData($data);
         }
         // Helper Function Return Files In portfolio_images
@@ -19,18 +19,8 @@
             return view('frontend.pages.about');
          }
 
-         public function getImages() {
-            $makeup_images =  glob("../public/portfolio_images/makeup/*.jpg"); 
-            $hair =  glob("../public/portfolio_images/hair/*.jpg"); 
-            $fashion =  glob("../public/portfolio_images/fashion/*.jpg"); 
-            foreach($makeup_images as $img) {
-                $makeup[] = basename($img);
-            }
-            return [
-               'makeup' => $makeup,
-               'hair' => $hair,
-               'fashion' => $fashion,
-            ];
+         public function getPortfolioImages() {
+            return DB::table('portfolio')->get();
          }
 
          public function getTestimonialsPage() {
