@@ -12,12 +12,13 @@ class GalleryController extends Controller
 {
 
     function create(Request $request) {
-        if ($request->hasFile('image')) {
-            $destination = 'assets/uploads';
+        // Checking if request contains a file
+        if ($request->hasFile('image') && $request->input('description') && $request->input('tags')) {
+           // Storing File into variable and storing file in the the storage public folder
             $file = $request->file('image')->store('public');
-      
+            // Storing Current Time 
             $currentTime = new Carbon();  
-            
+            // Processing data to insert into database
             $data = [
                 'description' => $request->input('description'),
                 'basename' => basename($file),
@@ -25,15 +26,14 @@ class GalleryController extends Controller
                 'created_at' => $currentTime,
                 'updated_at' => $currentTime,
             ];
-
+            // Inserting data into database
             DB::table('portfolio')->insert($data);
-            return response()->json([
-                'status' => 'success',
-            ]);
+            // Returning response;
+            return response()->json();
         }
 
         else {
-            return response("nothing");
+            return false;
         }
     }
     function read() {

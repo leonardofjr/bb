@@ -8,9 +8,9 @@
                     </div>
                     <div class="col-sm-7">
                             <textarea :value="post.description" ></textarea>
-                            <form :action='"api/gallery/" + post.id' method="post">
+                            <form name="deleteFromGalleryForm" id="deleteFromGalleryForm">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <input type="submit" value="delete">
+                                <i class="far fa-trash-alt" v-on:click.prevent="deleteItem(post.id, $event)"></i>
                             </form>
                     </div>
                 </div>
@@ -32,12 +32,20 @@
             });
         },
         methods: {
-            deleteItem(id) {
-                  this.$http.delete("gallery/" + id)
+            deleteItem: function (id, e) {
+                  let formData = new FormData(document.getElementById('deleteFromGalleryForm'));
+                  this.$http.post("gallery/" + id, formData)
                     .then((response) => {
-                        console.log(response);
+                     // Check if response is 200
+                        if (response.status === 200) {
+                            // If response is successful then we will send the user to the previous page
+                            this.back();
+                        }        
                     });
-            }
+            },
+            back() {
+                window.history.back();
+            },
         }
     }
 </script>
