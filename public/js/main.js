@@ -52212,6 +52212,13 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(61);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -52233,14 +52240,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            errors: []
+        };
+    },
     mounted: function mounted() {
+        // Importing Validation Class
+
         console.log('Component mounted.');
     },
 
 
     methods: {
         submit: function submit(e) {
+
             // Getting Data From Form
             var addToGalleryForm = document.getElementById("addToGalleryForm");
             var formData = new FormData(addToGalleryForm);
@@ -52252,7 +52269,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.back();
                 }
             }, function (err) {
-                console.log(err);
+                var validation = new __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__["a" /* BasicValidation */]();
+                validation.addField('.error-image', err.body.errors.image);
+                validation.addField('.error-description', err.body.errors.description);
+                validation.addField('.error-tags', err.body.errors.tags);
+                // Passing Class Attached To All Errors
+                validation.init('.error');
             });
         },
 
@@ -52280,9 +52302,25 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
+        _c("div", {
+          staticClass: "my-3 d-none alert alert-warning error error-image",
+          attrs: { role: "alert" }
+        }),
+        _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
+        _c("div", {
+          staticClass:
+            "my-3 d-none alert alert-warning error error-description",
+          attrs: { role: "alert" }
+        }),
+        _vm._v(" "),
         _vm._m(2),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "my-3 d-none alert alert-warning error error-tags",
+          attrs: { role: "alert" }
+        }),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c(
@@ -52318,7 +52356,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
+      _c("textarea", {
         staticClass: "form-control",
         attrs: {
           type: "text",
@@ -52543,6 +52581,61 @@ var userFeed = new Instafeed({
     links: false
 });
 userFeed.run();
+
+/***/ }),
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BasicValidation; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var BasicValidation = function () {
+    function BasicValidation() {
+        _classCallCheck(this, BasicValidation);
+
+        this.fields = [];
+    }
+
+    _createClass(BasicValidation, [{
+        key: 'addField',
+        value: function addField(ele, field) {
+            if (field) {
+                this.fields.push({
+                    field: field[0],
+                    ele: ele
+                });
+            }
+        }
+    }, {
+        key: 'init',
+        value: function init(ele) {
+            this.hide(ele);
+            this.validate();
+        }
+    }, {
+        key: 'hide',
+        value: function hide(ele) {
+            $(ele).addClass('d-none');
+        }
+    }, {
+        key: 'validate',
+        value: function validate() {
+            this.fields.forEach(function (item, i) {
+                $(item.ele).removeClass('d-none');
+                $(item.ele).html(item.field);
+            });
+        }
+    }]);
+
+    return BasicValidation;
+}();
 
 /***/ })
 /******/ ]);

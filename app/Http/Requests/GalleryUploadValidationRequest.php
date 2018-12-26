@@ -26,9 +26,9 @@ class GalleryUploadValidationRequest extends Request
 
 
         return [
-                'gallery-filename-alternate-text' => 'required|min:2|max:25',
-                'gallery-categories' => 'required',
-                'gallery-file' => 'required',
+                'description' => 'required|min:2|max:25',
+                'tags' => 'required',
+                'image' => 'required',
         ];
     }
 
@@ -42,9 +42,9 @@ class GalleryUploadValidationRequest extends Request
 
 
         return [
-                'gallery-filename-alternate-text.required' => 'Alternate text field is required',
-                'gallery-filename-alternate-text..min' => 'Alternate text field must be greater than 2 characters',
-                'gallery-filename-alternate-text..max' => 'Alternate text field may not be greater than 25 characters',
+                'description.required' => 'Alternate text field is required',
+                'description..min' => 'Alternate text field must be greater than 2 characters',
+                'description..max' => 'Alternate text field may not be greater than 25 characters',
         ];
     }
 }
