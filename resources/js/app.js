@@ -15,6 +15,7 @@ Vue.use(VueResource)
 
 import Gallery from './components/Gallery'
 import AddToGallery from './components/AddToGallery'
+import EditGalleryItem from './components/EditGalleryItem'
 import Reviews from './components/Reviews'
 
 const router = new VueRouter({
@@ -27,12 +28,17 @@ const router = new VueRouter({
         },
         {
             path: '/gallery/add',
-            name: 'home',
+            name: 'Add',
             component: AddToGallery
         },
         {
+            path: '/gallery/edit/:id',
+            name: 'Edit',
+            component: EditGalleryItem
+        },
+        {
             path: '/reviews',
-            name: 'home',
+            name: 'Reviews',
             component: Reviews
         },
 

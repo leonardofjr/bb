@@ -39,6 +39,15 @@ class GalleryController extends Controller
     function read() {
             return DB::table('portfolio')->get();
     }
+    function readById($id) {
+            $portfolio = Portfolio::where('id', $id)->get();
+            return response()->json($portfolio);
+
+    }
+
+    function update() {
+            return DB::table('portfolio')->get();
+    }
     function delete($id) {
         // Getting Selection By ID
         $portfolio = Portfolio::where('id', $id)->get();
