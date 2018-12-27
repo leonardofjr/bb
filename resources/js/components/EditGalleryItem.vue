@@ -1,7 +1,7 @@
 <template>
             <div class="">
                 <h2>Edit</h2>
-                <form name="EditGalleryItem" id="EditGalleryItem">
+                <form name="editGalleryItem" id="editGalleryItem">
                     <img :src='"/storage/" + post.basename' :alt="post.description" id="imgPreview" class="img-fluid">
                     <div class="form-group">
                         <input type="file" id="image" name="image" accept="image/*" v-on:change="previewImageToUpload()">                    </div>
@@ -21,8 +21,9 @@
                     </div>
                     <div class="my-3 d-none alert alert-warning error error-tags" role="alert">
                     </div>
+                    <input type="hidden" name="_method" value="PUT">
                     <div class="form-group">
-                        <button v-on:click.prevent="submit($event)">Update</button>
+                        <button v-on:click.prevent="updateItem(post.id, $event)">Update</button>
                     </div>
                 </form>
             </div>
@@ -77,6 +78,8 @@ import {ImagePreview} from './ImagePreview.js';
                             // If response is successful then we will send the user to the previous page
                             this.back();
                         }        
+                    }, function(err) {
+                        console.log(err);
                     });
             },
 

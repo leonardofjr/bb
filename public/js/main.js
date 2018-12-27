@@ -52638,6 +52638,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -52682,6 +52683,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     // If response is successful then we will send the user to the previous page
                     _this.back();
                 }
+            }, function (err) {
+                console.log(err);
             });
         },
 
@@ -52715,7 +52718,7 @@ var render = function() {
   return _c("div", {}, [
     _c("h2", [_vm._v("Edit")]),
     _vm._v(" "),
-    _c("form", { attrs: { name: "EditGalleryItem", id: "EditGalleryItem" } }, [
+    _c("form", { attrs: { name: "editGalleryItem", id: "editGalleryItem" } }, [
       _c("img", {
         staticClass: "img-fluid",
         attrs: {
@@ -52796,6 +52799,8 @@ var render = function() {
         attrs: { role: "alert" }
       }),
       _vm._v(" "),
+      _c("input", { attrs: { type: "hidden", name: "_method", value: "PUT" } }),
+      _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c(
           "button",
@@ -52803,7 +52808,7 @@ var render = function() {
             on: {
               click: function($event) {
                 $event.preventDefault()
-                _vm.submit($event)
+                _vm.updateItem(_vm.post.id, $event)
               }
             }
           },

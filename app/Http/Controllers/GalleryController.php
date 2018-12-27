@@ -5,6 +5,7 @@ use Illuminate\Http\UploadedFile;
 use Carbon\Carbon;
 use DB;
 use App\Http\Requests\GalleryUploadValidationRequest;
+use Illuminate\Http\Request;
 use App\Portfolio;
 use Storage;
 
@@ -45,8 +46,48 @@ class GalleryController extends Controller
 
     }
 
-    function update() {
-            return DB::table('portfolio')->get();
+    function update($id, Request $request ) {
+            $portfolio = Portfolio::where('id', $id)->get();
+            $data = [];
+            if ($request->hasFile('image' )&& $request->input('description') && $request->input('tags')) {
+                // Storing new uploaded File
+                $file = $request->file('image')->store('public');
+                // Deleting Old File
+                // Getting Selection By ID
+                $portfolio = Portfolio::where('id', $id)->get();
+                    // Storing Filename in variable
+                $filename = $portfolio[0]->basename;
+                    // Deleteing File
+                Storage::delete('public/' . $filename);
+               
+                $data = [
+                    'basename' => basename($file),
+                    'description' => $request->input('description'),
+                    'tags' => $request->input('tags')
+                ];
+
+                // Inserting data into database
+                Portfolio::where('id', $id)->update($data);
+                // Returning response;
+                return response()->json($data);
+
+
+            }
+
+            elseif($request->input('description') && $request->input('tags')) {
+                // Processing data to insert into database
+                $data = [
+                    'description' => $request->input('description'),
+                    'tags' => $request->input('tags'),
+                ];
+
+                // Inserting data into database
+                Portfolio::where('id', $id)->update($data);
+                // Returning response;
+                return response()->json($data);
+            } else {
+                return response();
+            }
     }
     function delete($id) {
         // Getting Selection By ID
