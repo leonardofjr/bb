@@ -3,7 +3,7 @@
                 <router-link to="/gallery/add">Add</router-link>
                 <div v-for="post of posts" class="row" :key="post.id">
                     <div class="col-sm-5 portfolio-item">
-                            <img :src='"storage/" + post.basename' :alt="post.description" class="img-fluid">
+                            <img :src='"/storage/" + post.basename' :alt="post.description" class="img-fluid">
                     </div>
                     <div class="col-sm-7">
                             <p>{{post.description}}</p>

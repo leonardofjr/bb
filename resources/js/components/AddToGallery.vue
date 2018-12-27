@@ -73,6 +73,7 @@ import {ImagePreview} from './ImagePreview.js';
                          this.back();
                     }                  
                 }, function (err) {
+                    console.log(err);
                     // Creating an instance of the BasicValidation Class
                     let validation = new BasicValidation();
                     // Adding Errors Of Fields

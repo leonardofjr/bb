@@ -45,7 +45,7 @@ import {ImagePreview} from './ImagePreview.js';
         },
         mounted() {
             // Importing Validation Class
-            this.getItemFromGalleryById('27');
+            this.getItemFromGalleryById(this.$route.params.id);
             console.log('Component mounted.')
         },
 
