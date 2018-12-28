@@ -108,6 +108,10 @@ html {
   overflow-x: hidden;
 }
 
+.white-space {
+  height: 300px;
+}
+
 body {
   font-family: "Roboto", serif, "Open Sans";
 }
@@ -177,6 +181,7 @@ header .main-heading span {
 .jumbotron {
   background-color: #fff;
   padding: 0 !important;
+  margin: 0 !important;
 }
 
 .jumbotron div {
@@ -266,6 +271,13 @@ header .main-heading span {
   #call-to-action {
     height: 800px;
   }
+}
+
+/* Always set the map height explicitly to define the size of the div
+    * element that contains the map. */
+
+#map {
+  height: 600px;
 }
 
 #testimonials {

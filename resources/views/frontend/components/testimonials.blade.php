@@ -1,3 +1,4 @@
+<div class="white-space"></div>
 <section id="testimonials" class="container-fluid my-5 d-flex align-items-center">
     <div class="container text-center">
         <h2>TESTIMONIALS</h2>
@@ -6,3 +7,4 @@
     <a href="/testimonials" class="btn btn-primary">View more</a>
     </div>
 </section>
+<div class="white-space"></div>

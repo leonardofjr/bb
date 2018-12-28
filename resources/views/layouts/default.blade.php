@@ -13,15 +13,14 @@
             </div>
            @include('frontend.components.navigation')
             <!-- If user is on the homepage display this -->
-            @if (\Request::is('/'))  
-                @include ('frontend.components.jumbotron')
-            @endif
+            @include ('frontend.components.jumbotron')
         </header>
                     @if (!\Request::is('/'))  
                          @include('frontend/components/content-header')
                          @include('frontend/components/breadcrumbs')
 
-                         @endif
+                    @endif
+                    
         <main>
 
             <div class="content">
@@ -29,10 +28,8 @@
             </div>
                
         </main>
-        <footer>
            @include('frontend.components.footer')
-        </footer>
+        @include('frontend.components.partials.after-body-scripts')
     </body>
-    @include('frontend.components.partials.after-body-scripts')
 
 </html>

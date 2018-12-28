@@ -12,9 +12,8 @@
                  
             </div>
             <div class="col-sm-6 col-12">
-
+                @include('frontend.components.map')
             </div>
         </div>
-       
     <section>
 @endsection

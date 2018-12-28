@@ -36,7 +36,7 @@
         <footer>
                 @include('frontend.components.footer')
         </footer>
-    </body>
     @include('frontend.components.partials.after-body-scripts')
+    </body>
 
 </html>
