@@ -37,7 +37,7 @@ class GalleryController extends Controller
             return response();
         }
     }
-    function read() {
+    function readAll() {
             return DB::table('portfolio')->get();
     }
     function readById($id) {

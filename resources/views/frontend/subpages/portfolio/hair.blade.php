@@ -1,6 +1,6 @@
 @extends('layouts.page')
 @section('content')
-    <section class="container">
-        
-    </section>
+        @foreach($data as $item)
+            <img src='{{asset("storage/$item->basename")}}' alt='{{$item->description}}'>
+        @endforeach
 @endsection
