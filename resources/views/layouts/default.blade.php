@@ -16,9 +16,8 @@
             @include ('frontend.components.jumbotron')
         </header>
                     @if (!\Request::is('/'))  
-                         @include('frontend/components/content-header')
                          @include('frontend/components/breadcrumbs')
-
+                        <div class="white-space"></div>
                     @endif
                     
         <main>
