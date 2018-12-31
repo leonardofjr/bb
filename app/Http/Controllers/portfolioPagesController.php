@@ -13,8 +13,6 @@ class portfolioPagesController extends Controller
             return view('frontend.subpages.portfolio.makeup')->withData($data);
          }  // getMakeupPage() Ends Here
 
-
-
          public function getHairPage() {
             $data = $this->processDataByType('hair');
 

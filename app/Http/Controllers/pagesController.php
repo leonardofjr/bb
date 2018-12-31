@@ -11,7 +11,15 @@
         }
         public function getConfirmedReviews() {
             $testimonials = new Review();
-            return $testimonials->get();
+            $data = [];
+            foreach($testimonials->get() as $i => $value) {
+               if ($value->confirmed === 1) {
+                  $data[$i] = $value;
+               }
+
+            }
+
+            return $data;
         }
         // Helper Function Return Files In portfolio_images
 
