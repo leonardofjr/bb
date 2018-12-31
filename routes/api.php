@@ -22,3 +22,9 @@ Route::get('/gallery', 'GalleryController@readAll');
 Route::get('/gallery/{id}', 'GalleryController@readById');
 Route::put('/gallery/{id}', 'GalleryController@update');
 Route::delete('/gallery/{id}', 'GalleryController@delete');
+
+Route::post('/review', 'ReviewController@create');
+Route::get('/reviews', 'ReviewController@readAll');
+Route::get('/review/{id}', 'ReviewController@readById');
+Route::put('/review/{id}', 'ReviewController@update');
+Route::delete('/review/{id}', 'ReviewController@delete');

@@ -1,30 +1,14 @@
 <template>
             <div class="">
-                <h2>Add</h2>
+                <h2>Add Review</h2>
                 <form name="addToGalleryForm" id="addToGalleryForm">
-                    <img id="imgPreview" class="img-fluid" src="https://via.placeholder.com/150" alt="image preview">
-                    <div class="form-group">
-                        <input type="file" id="image" name="image" accept="image/*" v-on:change="previewImageToUpload()">
-                    </div>
-                    <div class="my-3 d-none alert alert-warning error error-image" role="alert">
-                    </div>
                     <div class="form-group">
                         <textarea type="text" class="form-control" name="description" id="description" placeholder="Describe the image"></textarea>
                     </div>
                     <div class="my-3 d-none alert alert-warning error error-description" role="alert">
                     </div>
-                     <div class="form-group">
-                        <select name="tags" id="tags" class="form-control">
-                            <option disabled selected>--- Choose Category ---</option>
-                            <option value="makeup">Makeup</option>
-                            <option value="hair">Hair</option>
-                            <option value="fashion">Fashion</option>
-                        </select>
-                    </div>
-                    <div class="my-3 d-none alert alert-warning error error-tags" role="alert">
-                    </div>
                     <div class="form-group">
-                        <button v-on:click.prevent="submit($event)">Add</button>
+                        <button v-on:click.prevent="submit($event)">Add Review</button>
                     </div>
                 </form>
             </div>

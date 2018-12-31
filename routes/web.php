@@ -34,7 +34,9 @@ Route::get('/portfolio',  ['as' => 'Portfolio', 'uses' => 'PagesController@getPo
     });
 
 // ** Testimonials ** //
-Route::get('testimonials',  ['as' => 'Testimonials', 'uses' => 'PagesController@getTestimonialsPage']);
+Route::get('/testimonials',  ['as' => 'Testimonials', 'uses' => 'PagesController@getTestimonialsPage']);
+
+Route::get('/add-review',  ['as' => 'Add Review', 'uses' => 'PagesController@getAddReviewPage']);
 
     
 // ** Contact ** //
@@ -43,8 +45,6 @@ Route::get('/contact',  ['as' => 'Contact', 'uses' => 'PagesController@getContac
 // ** POST Routes ** //
 
 Route::post('/contact', 'FormsController@postContact');
-Route::post('/newsletter', 'FormsController@postNewsletter');
-
 
 Auth::routes();
 

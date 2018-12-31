@@ -52924,10 +52924,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            posts: []
+        };
+    },
     mounted: function mounted() {
-        console.log('Component mounted.');
+        this.getItemsFromGallery();
+    },
+
+    methods: {
+
+        getItemsFromGallery: function getItemsFromGallery() {
+            // GET request for remote image
+            this.$http.get('gallery').then(function (response) {
+                this.posts = response.body;
+            });
+        },
+        deleteItem: function deleteItem(id, e) {
+            var _this = this;
+
+            var formData = new FormData(document.getElementById('deleteFromGalleryForm'));
+            this.$http.post("gallery/" + id, formData).then(function (response) {
+                // Check if response is 200
+                if (response.status === 200) {
+                    // If response is successful then we will send the user to the previous page
+                    _this.back();
+                }
+            });
+        },
+        back: function back() {
+            window.history.back();
+        }
     }
 });
 
@@ -52939,16 +52990,99 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", {}, [
+    _c(
+      "div",
+      { staticClass: "text-right mb-3" },
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-primary mb-3",
+            attrs: { to: "/reviews/add" }
+          },
+          [_vm._v("Add Review")]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.posts, function(post) {
+        return _c(
+          "div",
+          { key: post.id, staticClass: "col-12 col-sm-4 col-md-3 mb-3" },
+          [
+            _c(
+              "div",
+              { staticClass: "portfolio-item d-flex justify-content-center" },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: {
+                    src: "/storage/" + post.basename,
+                    alt: post.description
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex justify-content-center" }, [
+              _c(
+                "form",
+                {
+                  staticClass: "d-inline",
+                  attrs: {
+                    name: "deleteFromGalleryForm",
+                    id: "deleteFromGalleryForm"
+                  }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_method", value: "DELETE" }
+                  }),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "far fa-trash-alt btn",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.deleteItem(post.id, $event)
+                      }
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "d-inline",
+                  attrs: { name: "editGalleryItem", id: "editGalleryItem" }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_method", value: "PUT" }
+                  }),
+                  _vm._v(" "),
+                  _c("router-link", {
+                    staticClass: "btn fas fa-edit",
+                    attrs: { to: "/gallery/edit/" + post.id, tag: "i" }
+                  })
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      }),
+      0
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [_c("h2", [_vm._v("Reviews")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -53129,22 +53263,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -53211,54 +53329,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c("h2", [_vm._v("Add")]),
+    _c("h2", [_vm._v("Add Review")]),
     _vm._v(" "),
     _c(
       "form",
       { attrs: { name: "addToGalleryForm", id: "addToGalleryForm" } },
       [
-        _c("img", {
-          staticClass: "img-fluid",
-          attrs: {
-            id: "imgPreview",
-            src: "https://via.placeholder.com/150",
-            alt: "image preview"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            attrs: {
-              type: "file",
-              id: "image",
-              name: "image",
-              accept: "image/*"
-            },
-            on: {
-              change: function($event) {
-                _vm.previewImageToUpload()
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "my-3 d-none alert alert-warning error error-image",
-          attrs: { role: "alert" }
-        }),
-        _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
         _c("div", {
           staticClass:
             "my-3 d-none alert alert-warning error error-description",
-          attrs: { role: "alert" }
-        }),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "my-3 d-none alert alert-warning error error-tags",
           attrs: { role: "alert" }
         }),
         _vm._v(" "),
@@ -53273,7 +53354,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Add")]
+            [_vm._v("Add Review")]
           )
         ])
       ]
@@ -53295,28 +53376,6 @@ var staticRenderFns = [
           placeholder: "Describe the image"
         }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "select",
-        { staticClass: "form-control", attrs: { name: "tags", id: "tags" } },
-        [
-          _c("option", { attrs: { disabled: "", selected: "" } }, [
-            _vm._v("--- Choose Category ---")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "makeup" } }, [_vm._v("Makeup")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "hair" } }, [_vm._v("Hair")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "fashion" } }, [_vm._v("Fashion")])
-        ]
-      )
     ])
   }
 ]
