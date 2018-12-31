@@ -109,7 +109,21 @@ html {
 }
 
 .white-space {
-  height: 200px;
+  height: 160px;
+}
+
+.portfolio-item img {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .portfolio-item img {
+    max-height: 150px;
+  }
+}
+
+small {
+  font-size: 10px;
 }
 
 body {

@@ -14134,6 +14134,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_EditGalleryItem___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_EditGalleryItem__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Reviews__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Reviews___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_Reviews__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_AddReview__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_AddReview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_AddReview__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14154,6 +14156,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_
 
 
 
+
 var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
     mode: 'history',
     routes: [{
@@ -14162,16 +14165,20 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
         component: __WEBPACK_IMPORTED_MODULE_4__components_Gallery___default.a
     }, {
         path: '/gallery/add',
-        name: 'Add',
+        name: 'Add Image',
         component: __WEBPACK_IMPORTED_MODULE_5__components_AddToGallery___default.a
     }, {
         path: '/gallery/edit/:id',
-        name: 'Edit',
+        name: 'Edit Image',
         component: __WEBPACK_IMPORTED_MODULE_6__components_EditGalleryItem___default.a
     }, {
         path: '/reviews',
         name: 'Reviews',
         component: __WEBPACK_IMPORTED_MODULE_7__components_Reviews___default.a
+    }, {
+        path: '/reviews/add',
+        name: 'Add Review',
+        component: __WEBPACK_IMPORTED_MODULE_8__components_AddReview___default.a
     }]
 });
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.url.options.root = "http://localhost:8000/api/";
@@ -52161,6 +52168,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -52206,71 +52217,97 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("router-link", { attrs: { to: "/gallery/add" } }, [_vm._v("Add")]),
-      _vm._v(" "),
+  return _c("div", {}, [
+    _c(
+      "div",
+      { staticClass: "text-right mb-3" },
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-primary mb-3",
+            attrs: { to: "/gallery/add" }
+          },
+          [_vm._v("Add Image")]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
       _vm._l(_vm.posts, function(post) {
-        return _c("div", { key: post.id, staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-5 portfolio-item" }, [
-            _c("img", {
-              staticClass: "img-fluid",
-              attrs: { src: "/storage/" + post.basename, alt: post.description }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-7" }, [
-            _c("p", [_vm._v(_vm._s(post.description))]),
-            _vm._v(" "),
+        return _c(
+          "div",
+          { key: post.id, staticClass: "col-12 col-sm-4 col-md-3 mb-3" },
+          [
             _c(
-              "form",
-              {
-                attrs: {
-                  name: "deleteFromGalleryForm",
-                  id: "deleteFromGalleryForm"
-                }
-              },
+              "div",
+              { staticClass: "portfolio-item d-flex justify-content-center" },
               [
-                _c("input", {
-                  attrs: { type: "hidden", name: "_method", value: "DELETE" }
-                }),
-                _vm._v(" "),
-                _c("i", {
-                  staticClass: "far fa-trash-alt",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.deleteItem(post.id, $event)
-                    }
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: {
+                    src: "/storage/" + post.basename,
+                    alt: post.description
                   }
                 })
               ]
             ),
             _vm._v(" "),
-            _c(
-              "form",
-              { attrs: { name: "editGalleryItem", id: "editGalleryItem" } },
-              [
-                _c("input", {
-                  attrs: { type: "hidden", name: "_method", value: "PUT" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  { attrs: { to: "/gallery/edit/" + post.id } },
-                  [_vm._v("Edit")]
-                )
-              ],
-              1
-            )
-          ])
-        ])
-      })
-    ],
-    2
-  )
+            _c("div", { staticClass: "d-flex justify-content-center" }, [
+              _c(
+                "form",
+                {
+                  staticClass: "d-inline",
+                  attrs: {
+                    name: "deleteFromGalleryForm",
+                    id: "deleteFromGalleryForm"
+                  }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_method", value: "DELETE" }
+                  }),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "far fa-trash-alt btn",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.deleteItem(post.id, $event)
+                      }
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "d-inline",
+                  attrs: { name: "editGalleryItem", id: "editGalleryItem" }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_method", value: "PUT" }
+                  }),
+                  _vm._v(" "),
+                  _c("router-link", {
+                    staticClass: "btn fas fa-edit",
+                    attrs: { to: "/gallery/edit/" + post.id, tag: "i" }
+                  })
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52934,6 +52971,285 @@ module.exports = __webpack_require__(57);
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(67)
+/* template */
+var __vue_template__ = __webpack_require__(68)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/AddReview.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-84301604", Component.options)
+  } else {
+    hotAPI.reload("data-v-84301604", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(13);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            errors: []
+        };
+    },
+    mounted: function mounted() {
+        // Importing Validation Class
+
+        console.log('Component mounted.');
+    },
+
+
+    methods: {
+        // This function will run when changes occur on image input
+        previewImageToUpload: function previewImageToUpload() {
+
+            var imagePreview = new __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__["a" /* ImagePreview */]($('#image')[0], '#imgPreview');
+            imagePreview.init();
+        },
+
+        submit: function submit(e) {
+
+            // Getting Data From Form
+            var addToGalleryForm = document.getElementById("addToGalleryForm");
+            var formData = new FormData(addToGalleryForm);
+            // Posting To Server
+            this.$http.post('gallery', formData).then(function (response) {
+                // Check if response is 200
+                if (response.status === 200) {
+                    // If response is successful then we will send the user to the previous page
+                    this.back();
+                }
+            }, function (err) {
+                console.log(err);
+                // Creating an instance of the BasicValidation Class
+                var validation = new __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__["a" /* BasicValidation */]();
+                // Adding Errors Of Fields
+                validation.addField('.error-image', err.body.errors.image);
+                validation.addField('.error-description', err.body.errors.description);
+                validation.addField('.error-tags', err.body.errors.tags);
+                // Passing Class Attached To All Errors
+                validation.init('.error');
+            });
+        },
+
+        back: function back() {
+            window.history.back();
+        }
+    }
+
+});
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("h2", [_vm._v("Add")]),
+    _vm._v(" "),
+    _c(
+      "form",
+      { attrs: { name: "addToGalleryForm", id: "addToGalleryForm" } },
+      [
+        _c("img", {
+          staticClass: "img-fluid",
+          attrs: {
+            id: "imgPreview",
+            src: "https://via.placeholder.com/150",
+            alt: "image preview"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            attrs: {
+              type: "file",
+              id: "image",
+              name: "image",
+              accept: "image/*"
+            },
+            on: {
+              change: function($event) {
+                _vm.previewImageToUpload()
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "my-3 d-none alert alert-warning error error-image",
+          attrs: { role: "alert" }
+        }),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", {
+          staticClass:
+            "my-3 d-none alert alert-warning error error-description",
+          attrs: { role: "alert" }
+        }),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "my-3 d-none alert alert-warning error error-tags",
+          attrs: { role: "alert" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.submit($event)
+                }
+              }
+            },
+            [_vm._v("Add")]
+          )
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          name: "description",
+          id: "description",
+          placeholder: "Describe the image"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "select",
+        { staticClass: "form-control", attrs: { name: "tags", id: "tags" } },
+        [
+          _c("option", { attrs: { disabled: "", selected: "" } }, [
+            _vm._v("--- Choose Category ---")
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "makeup" } }, [_vm._v("Makeup")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "hair" } }, [_vm._v("Hair")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "fashion" } }, [_vm._v("Fashion")])
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-84301604", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
