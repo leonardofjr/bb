@@ -6,12 +6,7 @@
     <body>
         <a id="top"></a>
         <header>
-            <div class="container-fluid">
-                <div class="container text-right">
-                  <?php echo $company_phone ?>
-                  <?php echo $company_email ?>
-                </div>
-            </div>
+                @include('frontend.components.top-bar')
                 @include('frontend.components.navigation')
         </header>
                 @include('frontend/components/content-header')

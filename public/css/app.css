@@ -192,6 +192,14 @@ header .main-heading span {
   color: #d2587f !important;
 }
 
+.primary-bg {
+  background-color: #d2587f !important;
+}
+
+.color-white {
+  color: white;
+}
+
 .jumbotron {
   background-color: #fff;
   padding: 0 !important;

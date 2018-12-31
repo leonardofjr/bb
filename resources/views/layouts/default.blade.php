@@ -5,12 +5,7 @@
     </head>
     <body>
         <header>
-            <div class="container-fluid">
-                <div class="container text-right">
-                  <?php echo $company_phone ?>
-                  <?php echo $company_email ?>
-                </div>
-            </div>
+                @include('frontend.components.top-bar')
            @include('frontend.components.navigation')
             <!-- If user is on the homepage display this -->
             @include ('frontend.components.jumbotron')
