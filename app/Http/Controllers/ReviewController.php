@@ -57,6 +57,14 @@ class ReviewController extends Controller {
             return response();
         }
     }
+
+    function delete($id) {
+        // Getting Selection By ID
+        $review = Review::where('id', $id)->get();
+        // Removing Selection From Database
+        Review::where('id', $id)->delete();
+        return response('working');
+    }
 }
 
 

@@ -50,8 +50,8 @@
                 });
             },
             deleteItem: function (id, e) {
-                  let formData = new FormData(document.getElementById('deleteFromGalleryForm'));
-                  this.$http.post("gallery/" + id, formData)
+                  let formData = new FormData(document.getElementById('deleteReviewForm'));
+                  this.$http.post("review/" + id, formData)
                     .then((response) => {
                      // Check if response is 200
                         if (response.status === 200) {

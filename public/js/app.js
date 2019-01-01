@@ -52979,8 +52979,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteItem: function deleteItem(id, e) {
             var _this = this;
 
-            var formData = new FormData(document.getElementById('deleteFromGalleryForm'));
-            this.$http.post("gallery/" + id, formData).then(function (response) {
+            var formData = new FormData(document.getElementById('deleteReviewForm'));
+            this.$http.post("review/" + id, formData).then(function (response) {
                 // Check if response is 200
                 if (response.status === 200) {
                     // If response is successful then we will send the user to the previous page
