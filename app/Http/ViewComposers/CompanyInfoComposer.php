@@ -15,6 +15,9 @@ class CompanyInfoComposer {
         'company_territory' => '',
         'company_phone' => '647-982-8637',
         'company_email' => 'info@beautybliss.ca',
+        'company_facebook' => 'https://www.facebook.com/beautyblissbrampton/',
+        'company_instagram' => 'https://www.instagram.com/makeupbymindyb/',
+
       ]);
     }
 

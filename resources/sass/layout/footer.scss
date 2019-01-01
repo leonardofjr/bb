@@ -2,6 +2,10 @@ footer {
   background-color: #eee;
   color: #000;
   margin-top: 1em;
+
+  ul {
+      list-style-type: none;
+  }
 }
 
 .site-info {

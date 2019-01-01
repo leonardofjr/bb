@@ -372,6 +372,22 @@ body {
   display: none;
 }
 
+#top-bar a {
+  color: #fff;
+}
+
+.services-menu ul {
+  list-style-type: none;
+}
+
+.services-menu a {
+  color: #444;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 11px 15px;
+  display: block;
+  text-decoration: none;
+}
+
 .navbar {
   background-color: #fff !important;
 }
@@ -386,21 +402,26 @@ footer {
   margin-top: 1em;
 }
 
+footer ul {
+  list-style-type: none;
+}
+
 .site-info {
   background: #000;
   color: #888;
 }
 
-.services-menu ul {
+#pricing ul {
   list-style-type: none;
 }
 
-.services-menu a {
-  color: #444;
-  border-bottom: 1px solid #d2d2d2;
-  padding: 11px 15px;
-  display: block;
-  text-decoration: none;
+#contact-form input,
+#contact-form textarea,
+#addReviewForm input,
+#addReviewForm textarea {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid black;
 }
 
 .active {
@@ -431,5 +452,11 @@ footer a {
 
 footer a:hover {
   color: #bbb;
+}
+
+.job-title {
+  display: block;
+  color: #d2587f;
+  padding-bottom: 10px;
 }
 

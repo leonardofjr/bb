@@ -11,9 +11,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                 <h3>Our Services</h3>
-                <ul>
-                    @include('frontend.menus.sidebar-menu')
-                </ul>
+                @include('frontend.menus.sidebar-menu')
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-12">
                 <h3>Our Work</h3>

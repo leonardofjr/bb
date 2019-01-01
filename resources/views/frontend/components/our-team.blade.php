@@ -2,7 +2,7 @@
         <div class="col-sm-6">
             <div class="text-center">
                 <h3>Mindy Bharji</h3>
-                <span>Makeup Artist</span>            
+                <span class="job-title">Makeup Artist</span>            
             </div>
             <p>Mindy has over 15 years of experience in providing makeup application and sharing
             beauty expertise. She completed her diploma in Cosmetics Retail Management
@@ -13,7 +13,7 @@
         <div class="col-sm-6">
             <div class="text-center">
                 <h3>Pamela Brij</h3>
-                <span>Hairstylist</span>            
+                <span class="job-title">Hairstylist</span>            
             </div>
             <p>Pamela received her certificate from Avola College of Hairstyling & Esthetics in
             Toronto. Since then, she has spent over 13 years using her advanced skills and

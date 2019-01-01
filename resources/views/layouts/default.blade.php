@@ -1,4 +1,4 @@
-<!DOCTYPE html><?php $url = URL::to("/");?>
+<!DOCTYPE html>
 <html>
     <head>
         @include('frontend.components.partials.head')

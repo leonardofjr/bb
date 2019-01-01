@@ -1,5 +1,5 @@
 
-<form method="POST" action="/contact" class="mr-auto ml-auto py-4 contact-form">
+<form id="contact-form" method="POST" action="/contact" class="mr-auto ml-auto py-4 contact-form">
     {{ csrf_field() }} 
     <div class="form-group">
         <input class="form-control" type="text" name="contactFormName" placeholder="Name"/>
