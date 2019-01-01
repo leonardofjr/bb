@@ -18,6 +18,7 @@ import AddToGallery from './components/AddToGallery'
 import EditGalleryItem from './components/EditGalleryItem'
 import Reviews from './components/Reviews'
 import AddReview from './components/AddReview'
+import EditReview from './components/EditReview'
 
 const router = new VueRouter({
     mode: 'history',
@@ -46,6 +47,11 @@ const router = new VueRouter({
             path: '/reviews/add',
             name: 'Add Review',
             component: AddReview
+        },
+        {
+            path: '/review/edit/:id',
+            name: 'Edit Review',
+            component: EditReview
         },
 
     ],

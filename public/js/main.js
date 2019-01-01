@@ -14136,6 +14136,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Reviews___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_Reviews__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_AddReview__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_AddReview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_AddReview__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_EditReview__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_EditReview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_EditReview__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14150,6 +14152,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_resource__["a" /* default */]);
+
 
 
 
@@ -14179,6 +14182,10 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
         path: '/reviews/add',
         name: 'Add Review',
         component: __WEBPACK_IMPORTED_MODULE_8__components_AddReview___default.a
+    }, {
+        path: '/review/edit/:id',
+        name: 'Edit Review',
+        component: __WEBPACK_IMPORTED_MODULE_9__components_EditReview___default.a
     }]
 });
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.url.options.root = "http://localhost:8000/api/";
@@ -52945,6 +52952,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -52960,8 +52971,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         getItemsFromGallery: function getItemsFromGallery() {
             // GET request for remote image
-            this.$http.get('gallery').then(function (response) {
+            this.$http.get('reviews').then(function (response) {
                 this.posts = response.body;
+                console.log(this.posts);
             });
         },
         deleteItem: function deleteItem(id, e) {
@@ -53017,15 +53029,21 @@ var render = function() {
           [
             _c(
               "div",
-              { staticClass: "portfolio-item d-flex justify-content-center" },
+              { staticClass: "review-item d-flex justify-content-center" },
               [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: {
-                    src: "/storage/" + post.basename,
-                    alt: post.description
-                  }
-                })
+                _c("p", { staticStyle: { "font-size": "12px" } }, [
+                  _vm._v(_vm._s(post.review))
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "review-item d-flex justify-content-center" },
+              [
+                _c("p", { staticStyle: { "font-size": "12px" } }, [
+                  _vm._v(_vm._s(post.fname) + " " + _vm._s(post.lname))
+                ])
               ]
             ),
             _vm._v(" "),
@@ -53034,10 +53052,7 @@ var render = function() {
                 "form",
                 {
                   staticClass: "d-inline",
-                  attrs: {
-                    name: "deleteFromGalleryForm",
-                    id: "deleteFromGalleryForm"
-                  }
+                  attrs: { name: "deleteReviewForm", id: "deleteReviewForm" }
                 },
                 [
                   _c("input", {
@@ -53060,7 +53075,7 @@ var render = function() {
                 "form",
                 {
                   staticClass: "d-inline",
-                  attrs: { name: "editGalleryItem", id: "editGalleryItem" }
+                  attrs: { name: "editReviewItem", id: "editGalleryItem" }
                 },
                 [
                   _c("input", {
@@ -53069,7 +53084,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("router-link", {
                     staticClass: "btn fas fa-edit",
-                    attrs: { to: "/gallery/edit/" + post.id, tag: "i" }
+                    attrs: { to: "/review/edit/" + post.id, tag: "i" }
                   })
                 ],
                 1
@@ -53383,6 +53398,206 @@ var userFeed = new Instafeed({
     links: false
 });
 userFeed.run();
+
+/***/ }),
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(70)
+/* template */
+var __vue_template__ = __webpack_require__(71)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/EditReview.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-789bfdad", Component.options)
+  } else {
+    hotAPI.reload("data-v-789bfdad", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(5);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            errors: []
+        };
+    },
+    mounted: function mounted() {
+        // Importing Validation Class
+
+        console.log('Component mounted.');
+    },
+
+
+    methods: {
+        // This function will run when changes occur on image input
+        previewImageToUpload: function previewImageToUpload() {
+
+            var imagePreview = new __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__["a" /* ImagePreview */]($('#image')[0], '#imgPreview');
+            imagePreview.init();
+        },
+
+        submit: function submit(e) {
+
+            // Getting Data From Form
+            var addToGalleryForm = document.getElementById("addToGalleryForm");
+            var formData = new FormData(addToGalleryForm);
+            // Posting To Server
+            this.$http.post('gallery', formData).then(function (response) {
+                // Check if response is 200
+                if (response.status === 200) {
+                    // If response is successful then we will send the user to the previous page
+                    this.back();
+                }
+            }, function (err) {
+                console.log(err);
+                // Creating an instance of the BasicValidation Class
+                var validation = new __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__["a" /* BasicValidation */]();
+                // Adding Errors Of Fields
+                validation.addField('.error-image', err.body.errors.image);
+                validation.addField('.error-description', err.body.errors.description);
+                validation.addField('.error-tags', err.body.errors.tags);
+                // Passing Class Attached To All Errors
+                validation.init('.error');
+            });
+        },
+
+        back: function back() {
+            window.history.back();
+        }
+    }
+
+});
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("h2", [_vm._v("Add Review")]),
+    _vm._v(" "),
+    _c(
+      "form",
+      { attrs: { name: "addToGalleryForm", id: "addToGalleryForm" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", {
+          staticClass:
+            "my-3 d-none alert alert-warning error error-description",
+          attrs: { role: "alert" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.submit($event)
+                }
+              }
+            },
+            [_vm._v("Add Review")]
+          )
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          name: "description",
+          id: "description",
+          placeholder: "Describe the image"
+        }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-789bfdad", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

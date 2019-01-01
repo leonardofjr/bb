@@ -31,4 +31,11 @@ class ReviewController extends Controller
             return response();
         }
     }
+
+    function readAll(Request $request) {
+        $review = new Review();
+        return $review->get();
+    }
 }
+
+
