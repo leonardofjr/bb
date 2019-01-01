@@ -18,6 +18,18 @@
                     <div class="my-3 d-none alert alert-warning error error-review" role="alert">
                     </div>
 
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="confirmed" id="notValid" value="0" :checked='0 === this.post.confirmed'>
+                        <label class="form-check-label" for="notValid" >
+                            Not Valid
+                        </label>
+                    </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="confirmed" id="valid" value="1"  :checked='1 === this.post.confirmed' >
+                        <label class="form-check-label" for="valid">
+                            Valid
+                        </label>
+                    </div>
                     <input type="hidden" name="_method" value="PUT">
                     <div class="form-group">
                         <button v-on:click.prevent="updateReview(post.id, $event)">Update</button>

@@ -50,6 +50,7 @@ class ReviewController extends Controller {
             $review->fname = $request->input('fname');
             $review->lname = $request->input('lname');
             $review->review = $request->input('review');
+            $review->confirmed = $request->input('confirmed');
             $review->save();
             // Returning response;
             return response()->json($review);

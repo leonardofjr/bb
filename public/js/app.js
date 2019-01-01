@@ -52956,6 +52956,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -53027,68 +53037,80 @@ var render = function() {
           "div",
           { key: post.id, staticClass: "col-12 col-sm-4 col-md-3 mb-3" },
           [
-            _c(
-              "div",
-              { staticClass: "review-item d-flex justify-content-center" },
-              [
+            _c("div", { staticClass: "review-item" }, [
+              _c("div", { staticClass: "d-flex justify-content-center" }, [
                 _c("p", { staticStyle: { "font-size": "12px" } }, [
                   _vm._v(_vm._s(post.review))
                 ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "review-item d-flex justify-content-center" },
-              [
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex justify-content-center" }, [
                 _c("p", { staticStyle: { "font-size": "12px" } }, [
                   _vm._v(_vm._s(post.fname) + " " + _vm._s(post.lname))
                 ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex justify-content-center" }, [
-              _c(
-                "form",
-                {
-                  staticClass: "d-inline",
-                  attrs: { name: "deleteReviewForm", id: "deleteReviewForm" }
-                },
-                [
-                  _c("input", {
-                    attrs: { type: "hidden", name: "_method", value: "DELETE" }
-                  }),
-                  _vm._v(" "),
-                  _c("i", {
-                    staticClass: "far fa-trash-alt btn",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.deleteItem(post.id, $event)
-                      }
-                    }
-                  })
-                ]
-              ),
+              ]),
               _vm._v(" "),
-              _c(
-                "form",
-                {
-                  staticClass: "d-inline",
-                  attrs: { name: "editReviewItem", id: "editGalleryItem" }
-                },
-                [
-                  _c("input", {
-                    attrs: { type: "hidden", name: "_method", value: "PUT" }
-                  }),
-                  _vm._v(" "),
-                  _c("router-link", {
-                    staticClass: "btn fas fa-edit",
-                    attrs: { to: "/review/edit/" + post.id, tag: "i" }
-                  })
-                ],
-                1
-              )
+              _c("div", { staticClass: "d-flex justify-content-center" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "d-inline",
+                    attrs: { name: "deleteReviewForm", id: "deleteReviewForm" }
+                  },
+                  [
+                    _c("input", {
+                      attrs: {
+                        type: "hidden",
+                        name: "_method",
+                        value: "DELETE"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("i", {
+                      staticClass: "far fa-trash-alt btn",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.deleteItem(post.id, $event)
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    staticClass: "d-inline",
+                    attrs: { name: "editReviewItem", id: "editGalleryItem" }
+                  },
+                  [
+                    _c("input", {
+                      attrs: { type: "hidden", name: "_method", value: "PUT" }
+                    }),
+                    _vm._v(" "),
+                    _c("router-link", {
+                      staticClass: "btn fas fa-edit",
+                      attrs: { to: "/review/edit/" + post.id, tag: "i" }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex justify-content-center" }, [
+                post.confirmed
+                  ? _c("div", [
+                      _c("span", { staticClass: "text-success" }, [
+                        _vm._v("Validated")
+                      ])
+                    ])
+                  : _c("div", [
+                      _c("span", { staticClass: "text-danger" }, [
+                        _vm._v("Not Validated")
+                      ])
+                    ])
+              ])
             ])
           ]
         )
@@ -53385,6 +53407,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -53500,6 +53534,39 @@ var render = function() {
         staticClass: "my-3 d-none alert alert-warning error error-review",
         attrs: { role: "alert" }
       }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            type: "radio",
+            name: "confirmed",
+            id: "notValid",
+            value: "0"
+          },
+          domProps: { checked: 0 === this.post.confirmed }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "notValid" } },
+          [_vm._v("\n                Not Valid\n            ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: { type: "radio", name: "confirmed", id: "valid", value: "1" },
+          domProps: { checked: 1 === this.post.confirmed }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "valid" } },
+          [_vm._v("\n                Valid\n            ")]
+        )
+      ]),
       _vm._v(" "),
       _c("input", { attrs: { type: "hidden", name: "_method", value: "PUT" } }),
       _vm._v(" "),
