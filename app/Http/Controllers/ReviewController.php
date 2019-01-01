@@ -7,8 +7,7 @@ use App\Http\Requests\ReviewValidationRequest;
 use Illuminate\Http\Request;
 use App\Review;
 
-class ReviewController extends Controller
-{
+class ReviewController extends Controller {
     function create(Request $request) {
         $review = new Review();
         // Checking if request contains a file
@@ -35,6 +34,28 @@ class ReviewController extends Controller
     function readAll(Request $request) {
         $review = new Review();
         return $review->get();
+    }
+
+    function readById($id) {
+        $review = Review::where('id', $id)->get();
+        return response()->json($review);
+
+    }
+
+
+    function update($id, Request $request) {
+        if ($request->input('fname') && $request->input('lname') && $request->input('review') ) {
+            $review = Review::findOrFail($id);
+                // Processing data to insert into database
+            $review->fname = $request->input('fname');
+            $review->lname = $request->input('lname');
+            $review->review = $request->input('review');
+            $review->save();
+            // Returning response;
+            return response()->json($review);
+        } else {
+            return response();
+        }
     }
 }
 

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 61);
+/******/ 	return __webpack_require__(__webpack_require__.s = 64);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -377,33 +377,6 @@ module.exports = {
 /* 1 */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file.
@@ -510,7 +483,125 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
 /* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BasicValidation; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var BasicValidation = function () {
+    function BasicValidation() {
+        _classCallCheck(this, BasicValidation);
+
+        this.fields = [];
+    }
+
+    _createClass(BasicValidation, [{
+        key: 'addField',
+        value: function addField(ele, field) {
+            if (field) {
+                this.fields.push({
+                    field: field[0],
+                    ele: ele
+                });
+            }
+        }
+    }, {
+        key: 'init',
+        value: function init(ele) {
+            this.hide(ele);
+            this.validate();
+        }
+    }, {
+        key: 'hide',
+        value: function hide(ele) {
+            $(ele).addClass('d-none');
+        }
+    }, {
+        key: 'validate',
+        value: function validate() {
+            this.fields.forEach(function (item, i) {
+                $(item.ele).removeClass('d-none');
+                $(item.ele).html(item.field);
+            });
+        }
+    }]);
+
+    return BasicValidation;
+}();
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImagePreview; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ImagePreview = function () {
+    function ImagePreview(element, target) {
+        _classCallCheck(this, ImagePreview);
+
+        this.input = element;
+        this.target = target;
+    }
+
+    _createClass(ImagePreview, [{
+        key: 'init',
+        value: function init() {
+            this.process(this.target);
+        }
+    }, {
+        key: 'process',
+        value: function process(target) {
+            // Getting Image From Input
+            if (this.input.files && this.input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(target).attr('src', e.target.result);
+                };
+                reader.readAsDataURL(this.input.files[0]);
+            }
+        }
+    }]);
+
+    return ImagePreview;
+}();
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -612,97 +703,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
-
-/***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BasicValidation; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var BasicValidation = function () {
-    function BasicValidation() {
-        _classCallCheck(this, BasicValidation);
-
-        this.fields = [];
-    }
-
-    _createClass(BasicValidation, [{
-        key: 'addField',
-        value: function addField(ele, field) {
-            if (field) {
-                this.fields.push({
-                    field: field[0],
-                    ele: ele
-                });
-            }
-        }
-    }, {
-        key: 'init',
-        value: function init(ele) {
-            this.hide(ele);
-            this.validate();
-        }
-    }, {
-        key: 'hide',
-        value: function hide(ele) {
-            $(ele).addClass('d-none');
-        }
-    }, {
-        key: 'validate',
-        value: function validate() {
-            this.fields.forEach(function (item, i) {
-                $(item.ele).removeClass('d-none');
-                $(item.ele).html(item.field);
-            });
-        }
-    }]);
-
-    return BasicValidation;
-}();
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImagePreview; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ImagePreview = function () {
-    function ImagePreview(element, target) {
-        _classCallCheck(this, ImagePreview);
-
-        this.input = element;
-        this.target = target;
-    }
-
-    _createClass(ImagePreview, [{
-        key: 'init',
-        value: function init() {
-            this.process(this.target);
-        }
-    }, {
-        key: 'process',
-        value: function process(target) {
-            // Getting Image From Input
-            if (this.input.files && this.input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $(target).attr('src', e.target.result);
-                };
-                reader.readAsDataURL(this.input.files[0]);
-            }
-        }
-    }]);
-
-    return ImagePreview;
-}();
 
 /***/ }),
 /* 6 */
@@ -3283,7 +3283,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
 /* 7 */
@@ -14136,7 +14136,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Reviews___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_Reviews__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_AddReview__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_AddReview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_AddReview__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_EditReview__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_EditReview__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_EditReview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_EditReview__);
 
 /**
@@ -31369,7 +31369,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(17)(module)))
 
 /***/ }),
 /* 17 */
@@ -35670,7 +35670,7 @@ module.exports = __webpack_require__(20);
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(8);
 var Axios = __webpack_require__(22);
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(5);
 
 /**
  * Create an instance of Axios
@@ -35753,7 +35753,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(5);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(31);
 var dispatchRequest = __webpack_require__(32);
@@ -36292,7 +36292,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(33);
 var isCancel = __webpack_require__(12);
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(5);
 var isAbsoluteURL = __webpack_require__(34);
 var combineURLs = __webpack_require__(35);
 
@@ -47637,7 +47637,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(39).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(39).setImmediate))
 
 /***/ }),
 /* 39 */
@@ -47707,7 +47707,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 40 */
@@ -47900,7 +47900,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(9)))
 
 /***/ }),
 /* 41 */
@@ -52104,7 +52104,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(45)
 /* template */
@@ -52331,7 +52331,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(48)
 /* template */
@@ -52379,8 +52379,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(4);
 //
 //
 //
@@ -52602,7 +52602,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(51)
 /* template */
@@ -52650,8 +52650,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(4);
 //
 //
 //
@@ -52877,7 +52877,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(54)
 /* template */
@@ -53112,7 +53112,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(57)
 /* template */
@@ -53160,8 +53160,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(4);
 //
 //
 //
@@ -53304,24 +53304,251 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */,
-/* 60 */,
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/EditReview.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-789bfdad", Component.options)
+  } else {
+    hotAPI.reload("data-v-789bfdad", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(3);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            post: [],
+            errors: []
+        };
+    },
+    mounted: function mounted() {
+        // Importing Validation Class
+        this.getReviewItemById(this.$route.params.id);
+        console.log('Component mounted.');
+    },
+
+
+    methods: {
+
+        // This function will run when changes occur on image input
+
+        getReviewItemById: function getReviewItemById(id) {
+            // GET request for remote image
+            this.$http.get('review/' + id).then(function (response) {
+                this.post = response.body[0];
+                console.log(this.post);
+            });
+        },
+        updateReview: function updateReview(id, e) {
+            var _this = this;
+
+            var formData = new FormData(document.getElementById('editReviewItem'));
+            this.$http.post("review/" + id, formData).then(function (response) {
+                // Check if response is 200
+                if (response.status === 200) {
+                    // If response is successful then we will send the user to the previous page
+                    _this.back();
+                }
+            }, function (err) {
+                console.log(err);
+            });
+        },
+
+        back: function back() {
+            window.history.back();
+        }
+    }
+
+});
+
+/***/ }),
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(62);
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("h2", [_vm._v("Edit")]),
+    _vm._v(" "),
+    _c("form", { attrs: { name: "editReviewItem", id: "editReviewItem" } }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "fname",
+            id: "fname",
+            placeholder: "First Name"
+          },
+          domProps: { value: this.post.fname }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "my-3 d-none alert alert-warning error error-fname",
+        attrs: { role: "alert" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "lname",
+            id: "lname",
+            placeholder: "Last Name"
+          },
+          domProps: { value: this.post.lname }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "my-3 d-none alert alert-warning error error-lname",
+        attrs: { role: "alert" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "review",
+            id: "review",
+            placeholder: "Review"
+          },
+          domProps: { value: this.post.review }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "my-3 d-none alert alert-warning error error-review",
+        attrs: { role: "alert" }
+      }),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "hidden", name: "_method", value: "PUT" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.updateReview(_vm.post.id, $event)
+              }
+            }
+          },
+          [_vm._v("Update")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-789bfdad", module.exports)
+  }
+}
+
+/***/ }),
+/* 62 */,
+/* 63 */,
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(65);
 
 
 /***/ }),
-/* 62 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-__webpack_require__(63);
-__webpack_require__(64);
+__webpack_require__(66);
+__webpack_require__(67);
 
 /***/ }),
-/* 63 */
+/* 66 */
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -53369,7 +53596,7 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 64 */
+/* 67 */
 /***/ (function(module, exports) {
 
 // Use the CDN or host the script yourself
@@ -53398,206 +53625,6 @@ var userFeed = new Instafeed({
     links: false
 });
 userFeed.run();
-
-/***/ }),
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(70)
-/* template */
-var __vue_template__ = __webpack_require__(71)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/EditReview.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-789bfdad", Component.options)
-  } else {
-    hotAPI.reload("data-v-789bfdad", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 70 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(5);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            errors: []
-        };
-    },
-    mounted: function mounted() {
-        // Importing Validation Class
-
-        console.log('Component mounted.');
-    },
-
-
-    methods: {
-        // This function will run when changes occur on image input
-        previewImageToUpload: function previewImageToUpload() {
-
-            var imagePreview = new __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__["a" /* ImagePreview */]($('#image')[0], '#imgPreview');
-            imagePreview.init();
-        },
-
-        submit: function submit(e) {
-
-            // Getting Data From Form
-            var addToGalleryForm = document.getElementById("addToGalleryForm");
-            var formData = new FormData(addToGalleryForm);
-            // Posting To Server
-            this.$http.post('gallery', formData).then(function (response) {
-                // Check if response is 200
-                if (response.status === 200) {
-                    // If response is successful then we will send the user to the previous page
-                    this.back();
-                }
-            }, function (err) {
-                console.log(err);
-                // Creating an instance of the BasicValidation Class
-                var validation = new __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__["a" /* BasicValidation */]();
-                // Adding Errors Of Fields
-                validation.addField('.error-image', err.body.errors.image);
-                validation.addField('.error-description', err.body.errors.description);
-                validation.addField('.error-tags', err.body.errors.tags);
-                // Passing Class Attached To All Errors
-                validation.init('.error');
-            });
-        },
-
-        back: function back() {
-            window.history.back();
-        }
-    }
-
-});
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c("h2", [_vm._v("Add Review")]),
-    _vm._v(" "),
-    _c(
-      "form",
-      { attrs: { name: "addToGalleryForm", id: "addToGalleryForm" } },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", {
-          staticClass:
-            "my-3 d-none alert alert-warning error error-description",
-          attrs: { role: "alert" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.submit($event)
-                }
-              }
-            },
-            [_vm._v("Add Review")]
-          )
-        ])
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: {
-          type: "text",
-          name: "description",
-          id: "description",
-          placeholder: "Describe the image"
-        }
-      })
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-789bfdad", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);
