@@ -21,7 +21,7 @@ import AddReview from './components/AddReview'
 import EditReview from './components/EditReview'
 
 const router = new VueRouter({
-    mode: 'history',
+   // mode: 'history',
     routes: [
         {
             path: '/gallery',

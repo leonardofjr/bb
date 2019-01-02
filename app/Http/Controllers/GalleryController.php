@@ -37,8 +37,14 @@ class GalleryController extends Controller
             return response();
         }
     }
-    function readAll() {
+    function readAll($limit = null , $offset = null) {
+        if (!$limit && !$offset) {
+    
             return DB::table('portfolio')->get();
+        } 
+        else {
+            return DB::table('portfolio')->limit($limit)->offset($offset)->get();
+        }
     }
     function readById($id) {
             $portfolio = Portfolio::where('id', $id)->get();

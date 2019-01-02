@@ -562,46 +562,6 @@ var BasicValidation = function () {
 
 /***/ }),
 /* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImagePreview; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ImagePreview = function () {
-    function ImagePreview(element, target) {
-        _classCallCheck(this, ImagePreview);
-
-        this.input = element;
-        this.target = target;
-    }
-
-    _createClass(ImagePreview, [{
-        key: 'init',
-        value: function init() {
-            this.process(this.target);
-        }
-    }, {
-        key: 'process',
-        value: function process(target) {
-            // Getting Image From Input
-            if (this.input.files && this.input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $(target).attr('src', e.target.result);
-                };
-                reader.readAsDataURL(this.input.files[0]);
-            }
-        }
-    }]);
-
-    return ImagePreview;
-}();
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -703,6 +663,46 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImagePreview; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ImagePreview = function () {
+    function ImagePreview(element, target) {
+        _classCallCheck(this, ImagePreview);
+
+        this.input = element;
+        this.target = target;
+    }
+
+    _createClass(ImagePreview, [{
+        key: 'init',
+        value: function init() {
+            this.process(this.target);
+        }
+    }, {
+        key: 'process',
+        value: function process(target) {
+            // Getting Image From Input
+            if (this.input.files && this.input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(target).attr('src', e.target.result);
+                };
+                reader.readAsDataURL(this.input.files[0]);
+            }
+        }
+    }]);
+
+    return ImagePreview;
+}();
 
 /***/ }),
 /* 6 */
@@ -14161,7 +14161,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_
 
 
 var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
-    mode: 'history',
+    // mode: 'history',
     routes: [{
         path: '/gallery',
         name: 'home',
@@ -35670,7 +35670,7 @@ module.exports = __webpack_require__(20);
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(8);
 var Axios = __webpack_require__(22);
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(4);
 
 /**
  * Create an instance of Axios
@@ -35753,7 +35753,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(4);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(31);
 var dispatchRequest = __webpack_require__(32);
@@ -36292,7 +36292,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(33);
 var isCancel = __webpack_require__(12);
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(4);
 var isAbsoluteURL = __webpack_require__(34);
 var combineURLs = __webpack_require__(35);
 
@@ -52179,11 +52179,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            posts: []
+            posts: [],
+            limit: 12,
+            offset: 0
         };
     },
     mounted: function mounted() {
@@ -52194,9 +52208,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         getItemsFromGallery: function getItemsFromGallery() {
             // GET request for remote image
-            this.$http.get('gallery').then(function (response) {
+            this.$http.get('gallery/' + this.limit + '/' + this.offset).then(function (response) {
                 this.posts = response.body;
             });
+        },
+        getNext: function getNext() {
+            this.offset += 12;
+            this.getItemsFromGallery();
+        },
+        getPrevious: function getPrevious() {
+            if (!this.offset <= 0) {
+                this.offset -= 12;
+                this.getItemsFromGallery();
+            }
         },
         deleteItem: function deleteItem(id, e) {
             var _this = this;
@@ -52241,79 +52265,119 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row" },
-      _vm._l(_vm.posts, function(post) {
-        return _c(
+    _vm.posts.length !== 0
+      ? _c(
           "div",
-          { key: post.id, staticClass: "col-12 col-sm-4 col-md-3 mb-3" },
-          [
-            _c(
+          { staticClass: "row" },
+          _vm._l(_vm.posts, function(post) {
+            return _c(
               "div",
-              { staticClass: "portfolio-item d-flex justify-content-center" },
+              { key: post.id, staticClass: "col-12 col-sm-4 col-md-3 mb-3" },
               [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: {
-                    src: "/storage/" + post.basename,
-                    alt: post.description
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex justify-content-center" }, [
-              _c(
-                "form",
-                {
-                  staticClass: "d-inline",
-                  attrs: {
-                    name: "deleteFromGalleryForm",
-                    id: "deleteFromGalleryForm"
-                  }
-                },
-                [
-                  _c("input", {
-                    attrs: { type: "hidden", name: "_method", value: "DELETE" }
-                  }),
-                  _vm._v(" "),
-                  _c("i", {
-                    staticClass: "far fa-trash-alt btn",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.deleteItem(post.id, $event)
+                _c(
+                  "div",
+                  {
+                    staticClass: "portfolio-item d-flex justify-content-center"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: {
+                        src: "/storage/" + post.basename,
+                        alt: post.description
                       }
-                    }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  staticClass: "d-inline",
-                  attrs: { name: "editGalleryItem", id: "editGalleryItem" }
-                },
-                [
-                  _c("input", {
-                    attrs: { type: "hidden", name: "_method", value: "PUT" }
-                  }),
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex justify-content-center" }, [
+                  _c(
+                    "form",
+                    {
+                      staticClass: "d-inline",
+                      attrs: {
+                        name: "deleteFromGalleryForm",
+                        id: "deleteFromGalleryForm"
+                      }
+                    },
+                    [
+                      _c("input", {
+                        attrs: {
+                          type: "hidden",
+                          name: "_method",
+                          value: "DELETE"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("i", {
+                        staticClass: "far fa-trash-alt btn",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.deleteItem(post.id, $event)
+                          }
+                        }
+                      })
+                    ]
+                  ),
                   _vm._v(" "),
-                  _c("router-link", {
-                    staticClass: "btn fas fa-edit",
-                    attrs: { to: "/gallery/edit/" + post.id, tag: "i" }
-                  })
-                ],
-                1
-              )
-            ])
-          ]
+                  _c(
+                    "form",
+                    {
+                      staticClass: "d-inline",
+                      attrs: { name: "editGalleryItem", id: "editGalleryItem" }
+                    },
+                    [
+                      _c("input", {
+                        attrs: { type: "hidden", name: "_method", value: "PUT" }
+                      }),
+                      _vm._v(" "),
+                      _c("router-link", {
+                        staticClass: "btn fas fa-edit",
+                        attrs: { to: "/gallery/edit/" + post.id, tag: "i" }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              ]
+            )
+          }),
+          0
         )
-      }),
-      0
-    )
+      : _c("div", { staticClass: "d-flex justify-content-center" }, [
+          _c("span", { staticClass: "h2 py-3" }, [_vm._v("No Results")])
+        ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "d-flex justify-content-center " }, [
+      _c(
+        "a",
+        {
+          staticClass: "mr-2 btn",
+          on: {
+            click: function($event) {
+              _vm.getPrevious()
+            }
+          }
+        },
+        [_vm._v("Previous")]
+      ),
+      _vm._v(" "),
+      _vm.posts.length !== 0
+        ? _c(
+            "a",
+            {
+              staticClass: "ml-2 btn",
+              on: {
+                click: function($event) {
+                  _vm.getNext()
+                }
+              }
+            },
+            [_vm._v("Next")]
+          )
+        : _c("a", { staticClass: "ml-2 btn" }, [_vm._v("Next")])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -52380,7 +52444,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(5);
 //
 //
 //
@@ -52651,7 +52715,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(5);
 //
 //
 //
@@ -53183,7 +53247,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(5);
 //
 //
 //

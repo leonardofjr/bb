@@ -7,8 +7,8 @@
        <div class="col-sm-4">
             <div class="card text-center">
             <div class="card-body">
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <h5 class="card-author"> {{$item->fname}}</h5>
+            <p class="card-text">{{$item->review}}</p>
+                <h5 class="card-author"> {{$item->fname}} {{$item->lname}}</h5>
             </div>
             </div>
         </div>
