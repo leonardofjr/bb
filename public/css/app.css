@@ -411,6 +411,10 @@ footer ul {
   color: #888;
 }
 
+#work .images {
+  overflow-x: auto;
+}
+
 #pricing ul {
   list-style-type: none;
 }

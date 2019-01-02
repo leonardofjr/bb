@@ -21,7 +21,7 @@ import AddReview from './components/AddReview'
 import EditReview from './components/EditReview'
 
 const router = new VueRouter({
-   // mode: 'history',
+   mode: 'history',
     routes: [
         {
             path: '/gallery',
@@ -56,7 +56,7 @@ const router = new VueRouter({
 
     ],
 });
-Vue.url.options.root = "http://localhost:8000/api/"
+Vue.url.options.root = "http://beautybliss.code/api/"
 
 const app = new Vue({
     el: '#app',

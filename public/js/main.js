@@ -14161,7 +14161,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_
 
 
 var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
-    // mode: 'history',
+    mode: 'history',
     routes: [{
         path: '/gallery',
         name: 'home',
@@ -14188,7 +14188,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
         component: __WEBPACK_IMPORTED_MODULE_9__components_EditReview___default.a
     }]
 });
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.url.options.root = "http://localhost:8000/api/";
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.url.options.root = "http://beautybliss.code/api/";
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
     el: '#app',

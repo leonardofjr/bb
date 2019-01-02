@@ -2,11 +2,12 @@
     namespace App\Http\Controllers;
     use Illuminate\Routing\Controller;
     use App\Review;
+    use App\Portfolio;
     use Storage;    
     use DB;
     class PagesController extends Controller {
         public function getHomepage() {
-            $data = $this->getPortfolioImages();
+            $data = Portfolio::limit(12)->get();
             return view('frontend.pages.home')->withData($data);
         }
         public function getConfirmedReviews() {

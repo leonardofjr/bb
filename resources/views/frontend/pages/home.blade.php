@@ -2,12 +2,16 @@
 @section('title', 'Makeup Services In Brampton')
 @section('content')
 <div class="white-space"></div>
-<section class="container-fluid">
-    <div class="container">
+<section class="container-fluid" id="work">
+        <h2 class="text-center mb-5">Our Work</h2>
+        <div class=" d-flex  images">
         @foreach ($data as $item)
-            <img src={{asset("storage/$item->basename")}} alt={{$item->description}} class="img-fluid">
+                <img src="{{asset("storage/$item->basename")}}" alt="{{$item->description}}" class="img-fluid px-1">
         @endforeach
-    </div>
+        </div>
+        <div class="text-center">
+        <a href="/portfolio" class="btn btn-primary mt-5">View more of work</a>
+        </div>
 </section>
 @include('frontend.components.testimonials')
 @include('frontend.components.instagram-feed')
