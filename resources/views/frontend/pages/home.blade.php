@@ -4,9 +4,9 @@
 <div class="white-space"></div>
 <section class="container-fluid" id="work">
         <h2 class="text-center mb-5">Our Work</h2>
-        <div class=" d-flex  images">
+        <div class="images pb-5">
         @foreach ($data as $item)
-                <img src="{{asset("storage/$item->basename")}}" alt="{{$item->description}}" class="img-fluid px-1">
+                <img src="{{asset("storage/$item->basename")}}" alt="{{$item->description}}" class="px-1">
         @endforeach
         </div>
         <div class="text-center">

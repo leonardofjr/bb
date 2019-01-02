@@ -7,7 +7,7 @@
     use DB;
     class PagesController extends Controller {
         public function getHomepage() {
-            $data = Portfolio::limit(12)->get();
+            $data = Portfolio::limit(12)->orderBy('created_at', 'dec')->get();
             return view('frontend.pages.home')->withData($data);
         }
         public function getConfirmedReviews() {
