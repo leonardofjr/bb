@@ -39,7 +39,6 @@ class GalleryController extends Controller
     }
     function readAll($limit = null , $offset = null) {
         if (!$limit && !$offset) {
-    
             return DB::table('portfolio')->get();
         } 
         else {
