@@ -13,9 +13,6 @@
                 </div>
             </nav>
         </header>
-                    @if (!\Request::is('/'))  
-                        <div class="white-space"></div>
-                    @endif
         <main>
             <div class="content">
                  @yield('content')
