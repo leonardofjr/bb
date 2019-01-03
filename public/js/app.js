@@ -53030,6 +53030,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -53093,94 +53097,105 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row" },
-      _vm._l(_vm.posts, function(post) {
-        return _c(
+    _vm.posts.length !== 0
+      ? _c(
           "div",
-          { key: post.id, staticClass: "col-12 col-sm-4 col-md-3 mb-3" },
-          [
-            _c("div", { staticClass: "review-item" }, [
-              _c("div", { staticClass: "d-flex justify-content-center" }, [
-                _c("p", { staticStyle: { "font-size": "12px" } }, [
-                  _vm._v(_vm._s(post.review))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex justify-content-center" }, [
-                _c("p", { staticStyle: { "font-size": "12px" } }, [
-                  _vm._v(_vm._s(post.fname) + " " + _vm._s(post.lname))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex justify-content-center" }, [
-                _c(
-                  "form",
-                  {
-                    staticClass: "d-inline",
-                    attrs: { name: "deleteReviewForm", id: "deleteReviewForm" }
-                  },
-                  [
-                    _c("input", {
-                      attrs: {
-                        type: "hidden",
-                        name: "_method",
-                        value: "DELETE"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("i", {
-                      staticClass: "far fa-trash-alt btn",
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          _vm.deleteItem(post.id, $event)
+          { staticClass: "row" },
+          _vm._l(_vm.posts, function(post) {
+            return _c(
+              "div",
+              { key: post.id, staticClass: "col-12 col-sm-4 col-md-3 mb-3" },
+              [
+                _c("div", { staticClass: "review-item" }, [
+                  _c("div", { staticClass: "d-flex justify-content-center" }, [
+                    _c("p", { staticStyle: { "font-size": "12px" } }, [
+                      _vm._v(_vm._s(post.review))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex justify-content-center" }, [
+                    _c("p", { staticStyle: { "font-size": "12px" } }, [
+                      _vm._v(_vm._s(post.fname) + " " + _vm._s(post.lname))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex justify-content-center" }, [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "d-inline",
+                        attrs: {
+                          name: "deleteReviewForm",
+                          id: "deleteReviewForm"
                         }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "form",
-                  {
-                    staticClass: "d-inline",
-                    attrs: { name: "editReviewItem", id: "editGalleryItem" }
-                  },
-                  [
-                    _c("input", {
-                      attrs: { type: "hidden", name: "_method", value: "PUT" }
-                    }),
+                      },
+                      [
+                        _c("input", {
+                          attrs: {
+                            type: "hidden",
+                            name: "_method",
+                            value: "DELETE"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("i", {
+                          staticClass: "far fa-trash-alt btn",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.deleteItem(post.id, $event)
+                            }
+                          }
+                        })
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("router-link", {
-                      staticClass: "btn fas fa-edit",
-                      attrs: { to: "/review/edit/" + post.id, tag: "i" }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex justify-content-center" }, [
-                post.confirmed
-                  ? _c("div", [
-                      _c("span", { staticClass: "text-success" }, [
-                        _vm._v("Validated")
-                      ])
-                    ])
-                  : _c("div", [
-                      _c("span", { staticClass: "text-danger" }, [
-                        _vm._v("Not Validated")
-                      ])
-                    ])
-              ])
-            ])
-          ]
+                    _c(
+                      "form",
+                      {
+                        staticClass: "d-inline",
+                        attrs: { name: "editReviewItem", id: "editGalleryItem" }
+                      },
+                      [
+                        _c("input", {
+                          attrs: {
+                            type: "hidden",
+                            name: "_method",
+                            value: "PUT"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("router-link", {
+                          staticClass: "btn fas fa-edit",
+                          attrs: { to: "/review/edit/" + post.id, tag: "i" }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex justify-content-center" }, [
+                    post.confirmed
+                      ? _c("div", [
+                          _c("span", { staticClass: "text-success" }, [
+                            _vm._v("Validated")
+                          ])
+                        ])
+                      : _c("div", [
+                          _c("span", { staticClass: "text-danger" }, [
+                            _vm._v("Not Validated")
+                          ])
+                        ])
+                  ])
+                ])
+              ]
+            )
+          }),
+          0
         )
-      }),
-      0
-    )
+      : _c("div", { staticClass: "d-flex justify-content-center" }, [
+          _c("span", { staticClass: "h2 py-3" }, [_vm._v("No Results")])
+        ])
   ])
 }
 var staticRenderFns = []

@@ -3,7 +3,7 @@
                 <div class="text-right mb-3">
                     <router-link to="/reviews/add" class="btn btn-primary mb-3">Add Review</router-link>
                 </div>
-                <div class="row" >
+                <div class="row" v-if="posts.length !== 0" >
                     <div class="col-12 col-sm-4 col-md-3 mb-3"  v-for="post of posts" :key="post.id">
                         <div class="review-item">
                             <div class="d-flex justify-content-center">
@@ -35,6 +35,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="d-flex justify-content-center"  v-else>
+                    <span class="h2 py-3">No Results</span>
                 </div>
             </div>
 </template>
