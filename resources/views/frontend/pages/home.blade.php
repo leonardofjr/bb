@@ -5,9 +5,13 @@
 <section class="container-fluid" id="work">
         <h2 class="text-center mb-5">Our Work</h2>
         <div class="images pb-5">
-        @foreach ($data as $item)
-                <img src="{{asset("storage/$item->basename")}}" alt="{{$item->description}}" class="px-1 img-border img-shadow">
-        @endforeach
+        @if(count($data) > 0) 
+            @foreach ($data as $item)
+                    <img src="{{asset("storage/$item->basename")}}" alt="{{$item->description}}" class="px-1 img-border img-shadow">
+            @endforeach
+        @else 
+            <h4 class="text-center">No images found.</h2>
+        @endif
         </div>
         <div class="text-center">
         <a href="/portfolio" class="btn btn-primary mt-5">View more of work</a>

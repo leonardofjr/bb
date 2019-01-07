@@ -1,6 +1,7 @@
 @extends('layouts.portfolio')
 @section('title', 'Portfolio')
 @section('content')
+    @if(count($data) > 0)
         @foreach($data as $item)
             <img src='{{asset("storage/$item->basename")}}' alt='{{$item->description}}' data-toggle="modal" data-target="#exampleModal" data-id="{{$item->id}}">
         @endforeach
@@ -23,4 +24,7 @@
                 </div>
             </div>
         </div>
+    @else
+        <h4 class="text-center">No images found</h4>
+    @endif
 @endsection
