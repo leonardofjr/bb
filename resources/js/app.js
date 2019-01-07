@@ -13,6 +13,7 @@ import VueResource from 'vue-resource'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
+import App from './components/App'
 import Gallery from './components/Gallery'
 import AddToGallery from './components/AddToGallery'
 import EditGalleryItem from './components/EditGalleryItem'
@@ -60,5 +61,6 @@ Vue.url.options.root = "http://localhost:8000/api/"
 
 const app = new Vue({
     el: '#app',
+    components: { App },
     router,
 });
