@@ -9,17 +9,15 @@
                 @include('frontend.components.navigation')
         </header>
                 @include('frontend/components/content-header')
-        <main class="container">
-
+        <main class="container-fluid">
             <div class="row">
-                <aside class="col-lg-3 col-md-3 col-sm-3 services-menu">
-                    <h4>OUR SERVICES</h4>
+                <aside class="col-lg-2 col-md-2 col-sm-2 services-menu">
+                    <h4>Choose By Category</h4>
                     @include('frontend.menus.sidebar-menu')
                 </aside>
-                <section class="col-lg-9 col-md-9 col-sm-9">
 
+                <section id="portfolio-gallery" class="col-lg-10 col-md-10 col-sm-10">
                     <div class="content">
-
                         @yield('content')
                     </div>
                 </section>

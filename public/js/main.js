@@ -53691,7 +53691,8 @@ module.exports = __webpack_require__(65);
 
 __webpack_require__(14);
 __webpack_require__(66);
-__webpack_require__(67);
+__webpack_require__(72);
+//require('./instagram-feed.js');
 
 /***/ }),
 /* 66 */
@@ -53742,35 +53743,56 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 67 */
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */
 /***/ (function(module, exports) {
 
-// Use the CDN or host the script yourself
-// https://cdnjs.cloudflare.com/ajax/libs/instafeed.js/1.4.1/instafeed.min.js
-// https://matthewelsom.com/assets/js/libs/instafeed.min.js
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var userFeed = new Instafeed({
-    get: 'user',
-    userId: '1434371074',
-    clientId: 'e76694fd38c7412482d957c8fa45c8a4',
-    accessToken: '1434371074.1677ed0.911988fab4b64ae29eccb01405fb1a76',
-    resolution: 'standard_resolution',
-    template: '\
-    <div class="col-sm-3">\
-        <div class="card  p-3">\
-            <span class="pb-3"><b>Beauty Bliss</b></span>\
-            <div class="img-container">\
-              <a href="{{link}}" target="_blank" id="{{id}}" class="py-3"><img src="{{image}}" class="img-fluid" /></a>\
-            </div>\
-            <span><i class="far fa-heart"></i> {{likes}} <i class="far fa-comment"></i> {{comments}}</span>\
-        </div>\
-    </div>\
-    ',
-    sortBy: 'most-recent',
-    limit: 4,
-    links: false
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ModalAjaxRequest = function () {
+    function ModalAjaxRequest(url, id) {
+        _classCallCheck(this, ModalAjaxRequest);
+
+        this.url = url;
+        this.id = id;
+    }
+
+    _createClass(ModalAjaxRequest, [{
+        key: 'init',
+        value: function init() {
+            this.get();
+        }
+    }, {
+        key: 'get',
+        value: function get() {
+            $.get(this.url + '/gallery/' + this.getId(), function (data) {
+                $('.modal-description').html(data.description);
+                $('.modal-body img').attr('src', 'storage/' + data.basename);
+                $('.modal-body img').attr('alt', data.description);
+            });
+        }
+    }, {
+        key: 'getId',
+        value: function getId() {
+            return this.id;
+        }
+    }]);
+
+    return ModalAjaxRequest;
+}();
+
+$('#portfolio-gallery img').click(function () {
+    // Storing selected image id
+    id = $(this).data('id');
+    var modal = new ModalAjaxRequest('http://localhost:8000/api', id);
+    modal.init();
 });
-userFeed.run();
 
 /***/ })
 /******/ ]);

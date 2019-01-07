@@ -46,7 +46,7 @@ class GalleryController extends Controller
         }
     }
     function readById($id) {
-            $portfolio = Portfolio::where('id', $id)->get();
+            $portfolio = Portfolio::findOrFail($id);
             return response()->json($portfolio);
 
     }

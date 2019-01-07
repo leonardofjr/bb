@@ -281,6 +281,12 @@ header .main-heading span {
   height: auto;
 }
 
+#content-header {
+  text-align: center;
+  margin: 4em 0;
+  font-weight: 600 !important;
+}
+
 #call-to-action {
   height: 600px;
   color: #fff;
@@ -426,6 +432,17 @@ footer ul {
   list-style-type: none;
 }
 
+#portfolio-gallery {
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#portfolio-gallery img {
+  height: 600px;
+  width: auto;
+}
+
 #contact-form input,
 #contact-form textarea,
 #addReviewForm input,
@@ -437,16 +454,6 @@ footer ul {
 
 .active {
   color: #d2587f !important;
-}
-
-.content-header {
-  background: #d2587f;
-  text-align: center;
-  color: #fff;
-}
-
-.content-header h1 {
-  font-size: 1.2em;
 }
 
 main {
@@ -469,5 +476,15 @@ footer a:hover {
   display: block;
   color: #d2587f;
   padding-bottom: 10px;
+}
+
+.img-border {
+  margin: 16px;
+  border: 10px solid white;
+}
+
+.img-shadow {
+  -webkit-box-shadow: 10px 10px 25px #aaa;
+          box-shadow: 10px 10px 25px #aaa;
 }
 

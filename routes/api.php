@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/gallery', 'GalleryController@create');
-Route::get('/gallery/{limit?}/{offset?}', 'GalleryController@readAll');
+//Route::get('/gallery/{limit?}/{offset?}', 'GalleryController@readAll');
 Route::get('/gallery/{id}', 'GalleryController@readById');
 Route::put('/gallery/{id}', 'GalleryController@update');
 Route::delete('/gallery/{id}', 'GalleryController@delete');

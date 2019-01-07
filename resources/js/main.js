@@ -1,3 +1,4 @@
 require('./app.js');
 require('./ajax-form-process.js');
-require('./instagram-feed.js');
+require('./modal-ajax-request.js');
+//require('./instagram-feed.js');

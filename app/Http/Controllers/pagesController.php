@@ -5,6 +5,7 @@
     use App\Portfolio;
     use Storage;    
     use DB;
+    
     class PagesController extends Controller {
         public function getHomepage() {
             $data = Portfolio::limit(12)->orderBy('created_at', 'dec')->get();
@@ -17,7 +18,6 @@
                if ($value->confirmed === 1) {
                   $data[$i] = $value;
                }
-
             }
 
             return $data;
@@ -29,16 +29,11 @@
             return view('frontend.pages.about');
          }
 
-         public function getPortfolioImages() {
-            return DB::table('portfolio')->get();
-         }
-         
-
          public function getTestimonialsPage() {
             return view('frontend.pages.testimonials')->withData($this->getConfirmedReviews());
          }
-         public function getAddReviewPage() {
-            return view('frontend.pages.add-review');
+         public function getLeaveReviewPage() {
+            return view('frontend.pages.leave-review');
          }
 
          public function getPricingPage() {
@@ -46,10 +41,9 @@
          } 
 
          public function getPortfolioPage() {
-   //         $json = Storage::disk('public')->get('work_table.json');
-    //        $json =  json_decode($json, true);
-            
-            return view('frontend.pages.portfolio');
+            $gallery = new GalleryController();
+            $data = json_decode($gallery->readAll());
+            return view('frontend.pages.portfolio')->withData($data);
          } 
 
          public function getContactPage() {
