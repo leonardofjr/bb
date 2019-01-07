@@ -61,6 +61,8 @@
                 .then(function (response) {
                     this.posts = response.body;
                     console.log(this.posts);
+                }, function(err) {
+                    console.log(err);
                 });
             },
             deleteItem: function (id, e) {

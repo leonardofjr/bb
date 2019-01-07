@@ -56,7 +56,7 @@ const router = new VueRouter({
 
     ],
 });
-Vue.url.options.root = "http://beautybliss.code/api/"
+Vue.url.options.root = "http://localhost:8000/api/"
 
 const app = new Vue({
     el: '#app',

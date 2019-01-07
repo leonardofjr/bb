@@ -1,24 +1,32 @@
 <template>
             <div class="">
                 <h2>Add Review</h2>
-                <form name="addToGalleryForm" id="addToGalleryForm">
-                    <div class="form-group">
-                        <textarea type="text" class="form-control" name="description" id="description" placeholder="Describe the image"></textarea>
-                    </div>
-                    <div class="my-3 d-none alert alert-warning error error-description" role="alert">
-                    </div>
-                    <div class="form-group">
-                        <button v-on:click.prevent="submit($event)">Add Review</button>
-                    </div>
-                </form>
+                   <form  name="addReviewForm" id="addReviewForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="fname" id="fname" placeholder="First Name">
+                        </div>
+                        <div class="my-3 d-none alert alert-warning error error-fname" role="alert">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name">
+                        </div>
+                        <div class="my-3 d-none alert alert-warning error error-lname" role="alert">
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" name="review" id="review" placeholder="Review"></textarea>
+                        </div>
+                        <div class="my-3 d-none alert alert-warning error error-review" role="alert">
+                        </div>
+                        <div class="form-group">
+                             <button v-on:click.prevent="submit($event)">Add Review</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 </template>
 
 <script>
 import {BasicValidation} from './BasicValidation.js';
-import {ImagePreview} from './ImagePreview.js';
-
-
 
     export default {
         data() {
@@ -36,20 +44,14 @@ import {ImagePreview} from './ImagePreview.js';
 
         methods: {
             // This function will run when changes occur on image input
-            previewImageToUpload: function() {
-
-                let imagePreview = new ImagePreview($('#image')[0], '#imgPreview');
-                imagePreview.init();
- 
-            },
 
             submit: function(e) {
 
                 // Getting Data From Form
-                let addToGalleryForm = document.getElementById("addToGalleryForm");
-                let formData = new FormData(addToGalleryForm)
+                let addReviewForm = document.getElementById("addReviewForm");
+                let formData = new FormData(addReviewForm)
                 // Posting To Server
-                this.$http.post('gallery', formData)
+                this.$http.post('review', formData)
                 .then(function (response) {
                     // Check if response is 200
                     if (response.status === 200) {
@@ -61,9 +63,9 @@ import {ImagePreview} from './ImagePreview.js';
                     // Creating an instance of the BasicValidation Class
                     let validation = new BasicValidation();
                     // Adding Errors Of Fields
-                    validation.addField('.error-image', err.body.errors.image);
-                    validation.addField('.error-description', err.body.errors.description);
-                    validation.addField('.error-tags', err.body.errors.tags);
+                    validation.addField('.error-fname', err.body.errors.fname);
+                    validation.addField('.error-lname', err.body.errors.lname);
+                    validation.addField('.error-review', err.body.errors.review);
                     // Passing Class Attached To All Errors
                     validation.init('.error');
 

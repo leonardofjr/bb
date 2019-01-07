@@ -14188,7 +14188,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
         component: __WEBPACK_IMPORTED_MODULE_9__components_EditReview___default.a
     }]
 });
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.url.options.root = "http://beautybliss.code/api/";
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.url.options.root = "http://localhost:8000/api/";
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
     el: '#app',
@@ -53052,6 +53052,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.get('reviews').then(function (response) {
                 this.posts = response.body;
                 console.log(this.posts);
+            }, function (err) {
+                console.log(err);
             });
         },
         deleteItem: function deleteItem(id, e) {
@@ -53262,7 +53264,6 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__ = __webpack_require__(5);
 //
 //
 //
@@ -53279,7 +53280,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -53298,19 +53309,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         // This function will run when changes occur on image input
-        previewImageToUpload: function previewImageToUpload() {
-
-            var imagePreview = new __WEBPACK_IMPORTED_MODULE_1__ImagePreview_js__["a" /* ImagePreview */]($('#image')[0], '#imgPreview');
-            imagePreview.init();
-        },
 
         submit: function submit(e) {
 
             // Getting Data From Form
-            var addToGalleryForm = document.getElementById("addToGalleryForm");
-            var formData = new FormData(addToGalleryForm);
+            var addReviewForm = document.getElementById("addReviewForm");
+            var formData = new FormData(addReviewForm);
             // Posting To Server
-            this.$http.post('gallery', formData).then(function (response) {
+            this.$http.post('review', formData).then(function (response) {
                 // Check if response is 200
                 if (response.status === 200) {
                     // If response is successful then we will send the user to the previous page
@@ -53321,9 +53327,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // Creating an instance of the BasicValidation Class
                 var validation = new __WEBPACK_IMPORTED_MODULE_0__BasicValidation_js__["a" /* BasicValidation */]();
                 // Adding Errors Of Fields
-                validation.addField('.error-image', err.body.errors.image);
-                validation.addField('.error-description', err.body.errors.description);
-                validation.addField('.error-tags', err.body.errors.tags);
+                validation.addField('.error-fname', err.body.errors.fname);
+                validation.addField('.error-lname', err.body.errors.lname);
+                validation.addField('.error-review', err.body.errors.review);
                 // Passing Class Attached To All Errors
                 validation.init('.error');
             });
@@ -53347,37 +53353,78 @@ var render = function() {
   return _c("div", {}, [
     _c("h2", [_vm._v("Add Review")]),
     _vm._v(" "),
-    _c(
-      "form",
-      { attrs: { name: "addToGalleryForm", id: "addToGalleryForm" } },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", {
-          staticClass:
-            "my-3 d-none alert alert-warning error error-description",
-          attrs: { role: "alert" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.submit($event)
-                }
+    _c("form", { attrs: { name: "addReviewForm", id: "addReviewForm" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "my-3 d-none alert alert-warning error error-fname",
+        attrs: { role: "alert" }
+      }),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "my-3 d-none alert alert-warning error error-lname",
+        attrs: { role: "alert" }
+      }),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "my-3 d-none alert alert-warning error error-review",
+        attrs: { role: "alert" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.submit($event)
               }
-            },
-            [_vm._v("Add Review")]
-          )
-        ])
-      ]
-    )
+            }
+          },
+          [_vm._v("Add Review")]
+        )
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          name: "fname",
+          id: "fname",
+          placeholder: "First Name"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          name: "lname",
+          id: "lname",
+          placeholder: "Last Name"
+        }
+      })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -53387,9 +53434,9 @@ var staticRenderFns = [
         staticClass: "form-control",
         attrs: {
           type: "text",
-          name: "description",
-          id: "description",
-          placeholder: "Describe the image"
+          name: "review",
+          id: "review",
+          placeholder: "Review"
         }
       })
     ])
@@ -53691,7 +53738,7 @@ module.exports = __webpack_require__(65);
 
 __webpack_require__(14);
 __webpack_require__(66);
-__webpack_require__(72);
+__webpack_require__(67);
 //require('./instagram-feed.js');
 
 /***/ }),
@@ -53743,12 +53790,7 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */
+/* 67 */
 /***/ (function(module, exports) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();

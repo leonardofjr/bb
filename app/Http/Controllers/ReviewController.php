@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Review;
 
 class ReviewController extends Controller {
-    function create(Request $request) {
+    function create(ReviewValidationRequest $request) {
         $review = new Review();
         // Checking if request contains a file
         if ($request->input('fname') && $request->input('lname') && $request->input('review')) {
