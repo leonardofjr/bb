@@ -26,7 +26,7 @@ class GalleryUploadValidationRequest extends Request
 
 
         return [
-                'description' => 'required|min:2|max:25',
+                'description' => 'required|min:25|max:125',
                 'tags' => 'required',
                 'image' => 'required',
         ];
@@ -42,9 +42,9 @@ class GalleryUploadValidationRequest extends Request
 
 
         return [
-                'description.required' => 'Alternate text field is required',
-                'description..min' => 'Alternate text field must be greater than 2 characters',
-                'description..max' => 'Alternate text field may not be greater than 25 characters',
+                'description.required' => 'Deescription field is required',
+                'description..min' => 'Description field must be greater than 25 characters',
+                'description..max' => 'Description field may not be greater than 125 characters',
         ];
     }
 }
