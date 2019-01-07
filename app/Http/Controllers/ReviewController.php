@@ -43,7 +43,7 @@ class ReviewController extends Controller {
     }
 
 
-    function update($id, Request $request) {
+    function update($id, ReviewValidationRequest $request) {
         if ($request->input('fname') && $request->input('lname') && $request->input('review') ) {
             $review = Review::findOrFail($id);
                 // Processing data to insert into database
