@@ -28,3 +28,6 @@ Route::get('/reviews', 'ReviewController@readAll');
 Route::get('/review/{id}', 'ReviewController@readById');
 Route::put('/review/{id}', 'ReviewController@update');
 Route::delete('/review/{id}', 'ReviewController@delete');
+
+
+Route::post('/site', 'SiteController@create');

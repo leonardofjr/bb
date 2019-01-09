@@ -3,6 +3,9 @@
         <div class="row">
             <ul class="nav flex-column col-sm-2">
                 <li class="nav-item">
+                    <router-link to="/site">Site</router-link>
+                </li>
+                <li class="nav-item">
                     <router-link to="/gallery">Gallery</router-link>
                 </li>
                 <li class="nav-item">

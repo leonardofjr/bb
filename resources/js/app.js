@@ -13,6 +13,7 @@ import VueResource from 'vue-resource'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 import App from './components/App'
+import Site from './components/Site'
 import Gallery from './components/Gallery'
 import AddToGallery from './components/AddToGallery'
 import EditGalleryItem from './components/EditGalleryItem'
@@ -22,9 +23,13 @@ import EditReview from './components/EditReview'
 
 const router = new VueRouter({
    mode: 'history',
-    routes: [
+    routes:[ 
         {
-            path: '/gallery',
+            path: '/site',
+            xname: 'Site',
+            component: Site
+        },
+        {  path: '/gallery',
             name: 'home',
             component: Gallery
         },
