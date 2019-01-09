@@ -4,7 +4,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import Bootstrap from './bootstrap.js';
+import Bootstrap from './bootstrap.js'
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -12,7 +12,6 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
-
 import App from './components/App'
 import Gallery from './components/Gallery'
 import AddToGallery from './components/AddToGallery'
