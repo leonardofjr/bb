@@ -1,15 +1,17 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
+        <div class="row">
+            <ul class="nav flex-column col-sm-2">
+                <li class="nav-item">
+                    <router-link to="/gallery">Gallery</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/reviews">Reviews</router-link>
+                </li>
+            </ul>
+            <section class="col-sm-10">
+                <router-view></router-view>
+            </section>
         </div>
     </div>
 </template>

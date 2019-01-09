@@ -57,6 +57,7 @@ const router = new VueRouter({
 
     ],
 });
+
 Vue.url.options.root = "http://localhost:8000/api/"
 
 const app = new Vue({
