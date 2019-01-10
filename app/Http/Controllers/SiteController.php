@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use DB;
 use App\Http\Requests\GalleryUploadValidationRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\SiteValidationRequest;
 use App\Portfolio;
 use App\Site;
 use Storage;
@@ -13,7 +14,7 @@ use Storage;
 class SiteController extends Controller
 {
 
-    function create(Request $request) {
+    function create(SiteValidationRequest $request) {
         // Checking if request contains a file
         if (/*$request->hasFile('image') && */$request->input('email') && $request->input('phone') && $request->input('facebook-url') && $request->input('instagram-url')) {
            // Storing File into variable and storing file in the the storage public folder

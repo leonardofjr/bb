@@ -7,10 +7,12 @@
     use DB;
     
     class PagesController extends Controller {
+
         public function getHomepage() {
             $data = Portfolio::limit(12)->orderBy('created_at', 'dec')->get();
             return view('frontend.pages.home')->withData($data);
         }
+
         public function getConfirmedReviews() {
             $testimonials = new Review();
             $data = [];
@@ -23,7 +25,6 @@
             return $data;
         }
         // Helper Function Return Files In portfolio_images
-
 
          public function getAboutPage() {
             return view('frontend.pages.about');

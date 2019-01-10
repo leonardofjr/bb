@@ -54,17 +54,20 @@ import {BasicValidation} from './BasicValidation.js';
                     }                  
                 }, function (err) {
                     console.log(err);
-                    // Creating an instance of the BasicValidation Class
+                   // Creating an instance of the BasicValidation Class
                     let validation = new BasicValidation();
-                    // Adding Errors Of Fields
+                   // Adding Errors Of Fields
                     validation.addField('.error-email', err.body.errors.email);
-                    validation.addField('.error-phone', err.body.errors.description);
-                    validation.addField('.error-facebook-url', err.body.errors.facebook-url);
-                    validation.addField('.error-instagram-url', err.body.errors.instagram-url);
-                    // Passing Class Attached To All Errors
-                    validation.init('.error');
-
+                    validation.addField('.error-phone', err.body.errors.phone);
+                     validation.addField('.error-facebook-url', err.body.errors.facebookUrl);
+                     validation.addField('.error-instagram-url', err.body.errors.instagramUrl);
+                   // Passing Class Attached To All Errors
+                     validation.init('.error');
                 })
+            },
+
+            back() {
+                window.history.back();
             },
         }
     }
