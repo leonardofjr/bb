@@ -52335,12 +52335,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            data: []
+        };
+    },
     mounted: function mounted() {
         console.log('Component mounted.');
+        this.getSiteData();
     },
 
 
     methods: {
+        getSiteData: function getSiteData() {
+            // GET request for remote image
+            this.$http.get('site').then(function (response) {
+                this.data = response.body;
+                console.log(this.data);
+            }, function (err) {
+                console.log(err);
+            });
+        },
+
         submit: function submit(e) {
 
             // Getting Data From Form
@@ -52383,28 +52399,72 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("form", { attrs: { name: "siteForm", id: "siteForm" } }, [
-      _vm._m(0),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "email",
+            name: "email",
+            id: "email",
+            placeholder: "Email"
+          },
+          domProps: { value: _vm.data[0].email }
+        })
+      ]),
       _vm._v(" "),
       _c("div", {
         staticClass: "my-3 d-none alert alert-warning error error-email",
         attrs: { role: "alert" }
       }),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "tel",
+            name: "phone",
+            id: "phone",
+            placeholder: "Phone"
+          },
+          domProps: { value: _vm.data[0].phone }
+        })
+      ]),
       _vm._v(" "),
       _c("div", {
         staticClass: "my-3 d-none alert alert-warning error error-phone",
         attrs: { role: "alert" }
       }),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "facebook-url",
+            id: "facebook-url",
+            placeholder: "Facebook Url"
+          },
+          domProps: { value: _vm.data[0].facebook_url }
+        })
+      ]),
       _vm._v(" "),
       _c("div", {
         staticClass: "my-3 d-none alert alert-warning error error-facebook-url",
         attrs: { role: "alert" }
       }),
       _vm._v(" "),
-      _vm._m(3),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "instagram-url",
+            id: "instagram-url",
+            placeholder: "Instagram Url"
+          },
+          domProps: { value: _vm.data[0].instagram_url }
+        })
+      ]),
       _vm._v(" "),
       _c("div", {
         staticClass:
@@ -52429,67 +52489,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "email",
-          name: "email",
-          id: "email",
-          placeholder: "Email"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "tel", name: "phone", id: "phone", placeholder: "Phone" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "text",
-          name: "facebook-url",
-          id: "facebook-url",
-          placeholder: "Facebook Url"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "text",
-          name: "instagram-url",
-          id: "instagram-url",
-          placeholder: "Instagram Url"
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

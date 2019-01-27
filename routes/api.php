@@ -29,5 +29,5 @@ Route::get('/review/{id}', 'ReviewController@readById');
 Route::put('/review/{id}', 'ReviewController@update');
 Route::delete('/review/{id}', 'ReviewController@delete');
 
-
+Route::get('/site', 'SiteController@readAll');
 Route::post('/site', 'SiteController@create');
